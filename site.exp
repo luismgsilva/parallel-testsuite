@@ -1,0 +1,78 @@
+set srcdir "/scratch/luiss/tmp3/delete2/testing-jenkins/gcc/gcc/testsuite"
+set arc_exec_prefix "/scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/bin/arc-elf32"
+
+set target_alias    "arc-elf32"
+set target_triplet  "arc-unknown-elf32"
+set rootme	    "."
+set tmpdir          "/scratch/luiss/tmp3/delete2/testing-jenkins/tmp"
+set CFLAGS	    ""
+set CXXFLAGS	    ""
+set SIM		    "/scratch/luiss/tmp3/delete2/testing-jenkins/arc-elf32-run"
+set GDB		    "${arc_exec_prefix}-gdb"
+# Binutils
+set NM		    "${arc_exec_prefix}-nm"
+set SIZE	    "${arc_exec_prefix}-size"
+set OBJDUMP	    "${arc_exec_prefix}-objdump"
+set OBJCOPY	    "${arc_exec_prefix}-objcopy"
+set AR		    "${arc_exec_prefix}-ar"
+set STRIP	    "${arc_exec_prefix}-strip"
+set READELF	    "${arc_exec_prefix}-readelf"
+set ELFEDIT	    "${arc_exec_prefix}-elfedit"
+set experimental    true
+set development     true
+# ld
+set LD		    "${arc_exec_prefix}-ld"
+
+set is_gcc_compat_suite "0"
+
+#if { "hs4xd" == "quarkse_em" } {
+#    set ARC_NSIM_APEX_DIR "/mnt/arcjenkins2/slaves/us01-odc-custom-arcoss1/workspace/arcoss_verification/arc_gnu_toolchain_verification/baremetal_tests-15/shared-scripts/dejagnu/quarkse_em/nsim-apex"
+#}
+
+if { $tool == "gcc" || $tool == "g++" || $tool == "gfortran" } {
+    set GCC_UNDER_TEST  "${arc_exec_prefix}-gcc"
+    set GXX_UNDER_TEST  "${arc_exec_prefix}-g++"
+    if { "$is_gcc_compat_suite" == "1" } {
+    set ALT_CC_UNDER_TEST	""
+    set ALT_CXX_UNDER_TEST	""
+    set COMPAT_OPTIONS	"[list [list {} {}]]"
+    # Skip tests with packed structures, complex integers and with variable
+    # length arrays. Complex integers are not part of C standard or ABI and
+    # may be skipped. Also VLA (variable length array) extension will never
+    # be supported by MetaWare compiler so it may be skipped too.
+    #set COMPAT_SKIPS	"[list {ATTRIBUTE} {COMPLEX_INT} {VLA_IN_STRUCT}]"
+    set COMPAT_SKIPS	"[list {ATTRIBUTE} {COMPLEX_INT}]"
+    set GFORTRAN_FOR_TARGET  "${arc_exec_prefix}-gfortran"
+    set GFORTRAN  "${arc_exec_prefix}-gfortran"
+    }
+} else {
+    set CC_FOR_TARGET   "${arc_exec_prefix}-gcc"
+    set CC		"${arc_exec_prefix}-gcc"
+    set CXX_FOR_TARGET  "${arc_exec_prefix}-g++"
+    set CXX		"${arc_exec_prefix}-g++"
+}
+
+switch $tool {
+    gdb {
+    # By default GDB is called with -data-directory option. This wreaks
+    # havoc when using an installed GDB, because passed -data-directory
+    # value is invalid. To fix the problem it is needed to override
+    # INTERNAL_GDBFLAGS variable.
+    set ::INTERNAL_GDBFLAGS "-nw -nx"
+    source $srcdir/lib/append_gdb_boards_dir.exp
+    #if {[string match arc*-linux-* $target_triplet]} {
+    #    set gdb_server_prog "/usr/bin/gdbserver"
+    #    set toolchain_sysroot_dir "/u/svc-arcoss_auto/arcoss_verification/arc-gnu-toolchain/workspace/builds/1330/arc-multilib-elf32/arc-snps-linux-/sysroot"
+    #    set toolchain_sysroot_dir "/scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/sysroot"
+    #}
+    }
+    libstdc++ {
+    set baseline_subdir_switch "--print-multi-directory"
+    }
+    libffi {
+    # By default libffi tests are linked dynamically. It is necessary to
+    # build libffi tests statically to ensure that we use libraries from
+    # our build directory but not from the target Linux system.
+    set CFLAGS_FOR_TARGET "-static"
+    }
+}
