@@ -26,7 +26,7 @@
 # This is the default target.
 # Set by autoconf to "all.internal" for a native build, or
 # "all.cross" to build a cross compiler.
-all: @ALL@
+all: all.cross
 
 # Depend on this to specify a phony target portably.
 force:
@@ -54,35 +54,37 @@ MAKEOVERRIDES =
 # Standard autoconf-set variables
 # -------------------------------
 
-build=@build@
-host=@host@
-host_noncanonical=@host_noncanonical@
-host_os=@host_os@
-target=@target@
-target_noncanonical:=@target_noncanonical@
+build=x86_64-pc-linux-gnu
+host=x86_64-pc-linux-gnu
+host_noncanonical=x86_64-pc-linux-gnu
+host_os=linux-gnu
+target=arc-unknown-elf32
+target_noncanonical:=arc-elf32
 
 # Normally identical to target_noncanonical, except for compilers built
 # as accelerator targets.
-real_target_noncanonical:=@real_target_noncanonical@
-accel_dir_suffix = @accel_dir_suffix@
+real_target_noncanonical:=arc-elf32
+accel_dir_suffix = 
 
 # Sed command to transform gcc to installed name.
-program_transform_name := @program_transform_name@
+program_transform_name := s&^&arc-elf32-&
 
 # -----------------------------
 # Directories used during build
 # -----------------------------
 
+gcc_dir = @with_gcc@
+
 # Directory where sources are, from where we are.
-srcdir = @srcdir@
-gcc_docdir = @srcdir@/doc
+srcdir = $(gcc_dir)/gcc
+gcc_docdir = $(gcc_dir)/gcc/doc
 
 # Directory where sources are, absolute.
-abs_srcdir = @abs_srcdir@
-abs_docdir = @abs_srcdir@/doc
+abs_srcdir = $(gcc-dir)/gcc
+abs_docdir = $(gcc-dir)/gcc/doc
 
 # Directory where sources are, relative to here.
-top_srcdir = @top_srcdir@
+top_srcdir = $(gcc-dir)/gcc
 
 # Top build directory for this package, relative to here.
 top_builddir = .
@@ -90,10 +92,10 @@ top_builddir = .
 # The absolute path to the current directory.
 objdir := $(shell pwd)
 
-host_subdir=@host_subdir@
-build_subdir=@build_subdir@
-target_subdir=@target_subdir@
-build_libsubdir=@build_libsubdir@
+host_subdir=.
+build_subdir=build-x86_64-pc-linux-gnu
+target_subdir=arc-elf32
+build_libsubdir=build-x86_64-pc-linux-gnu
 
 # Top build directory for the "Cygnus tree", relative to $(top_builddir).
 ifeq ($(host_subdir),.)
@@ -111,7 +113,7 @@ target_objdir := $(toplevel_builddir)/$(target_subdir)
 # --------
 
 # Directory where sources are, from where we are.
-VPATH = @srcdir@
+VPATH = $(gcc-dir)/gcc
 
 # We define a vpath for the sources of the .texi files here because they
 # are split between multiple directories and we would rather use one implicit
@@ -127,18 +129,18 @@ vpath %.texi $(gcc_docdir)/include
 
 # Extra flags to pass to indicate cross compilation, which
 # might be used or tested by Make-lang fragments.
-CROSS=@CROSS@
+CROSS=-DCROSS_DIRECTORY_STRUCTURE
 
 # Variables that exist for you to override.
 # See below for how to change them for certain systems.
 
 # List of language subdirectories.
-SUBDIRS =@subdirs@ build
+SUBDIRS = ada c cp d fortran go jit lto m2 objc objcp rust build
 
 # Selection of languages to be made.
-CONFIG_LANGUAGES = @all_selected_languages@
+CONFIG_LANGUAGES =  c c++ lto
 LANGUAGES = c $(CONFIG_LANGUAGES)
-ifeq (@enable_gcov@,yes)
+ifeq (yes,yes)
 LANGUAGES += gcov$(exeext) gcov-dump$(exeext) gcov-tool$(exeext)
 endif
 
@@ -151,17 +153,17 @@ endif
 T_CFLAGS =
 TCFLAGS =
 TFLAGS =
-CFLAGS = @CFLAGS@
-CXXFLAGS = @CXXFLAGS@
-LDFLAGS = @LDFLAGS@
+CFLAGS =   
+CXXFLAGS =    
+LDFLAGS = -static-libstdc++ -static-libgcc  
 
 # Should we build position-independent host code?
-PICFLAG = @PICFLAG@
+PICFLAG = 
 
 # Flags to determine code coverage. When coverage is disabled, this will
 # contain the optimization flags, as you normally want code coverage
 # without optimization.
-COVERAGE_FLAGS = @coverage_flags@
+COVERAGE_FLAGS = 
 coverageexts = .{gcda,gcno}
 
 # The warning flags are separate from CFLAGS because people tend to
@@ -176,18 +178,18 @@ coverageexts = .{gcda,gcno}
 # apply to the back end and some front ends, which may be compiled
 # with other compilers.
 # C_STRICT_WARN is similar, with C-only warnings.
-LOOSE_WARN = @loose_warn@
-C_LOOSE_WARN = @c_loose_warn@
-STRICT_WARN = @strict_warn@
-C_STRICT_WARN = @c_strict_warn@
+LOOSE_WARN = -W -Wall -Wno-narrowing -Wwrite-strings -Wcast-qual
+C_LOOSE_WARN = -Wstrict-prototypes -Wmissing-prototypes
+STRICT_WARN = -Wmissing-format-attribute -Wconditionally-supported -Woverloaded-virtual -pedantic -Wno-long-long -Wno-variadic-macros -Wno-overlength-strings
+C_STRICT_WARN = -Wold-style-definition -Wc++-compat
 
 # This is set by --enable-checking.  The idea is to catch forgotten
 # "extern" tags in header files.
-NOCOMMON_FLAG = @nocommon_flag@
+NOCOMMON_FLAG = 
 
-NOEXCEPTION_FLAGS = @noexception_flags@
+NOEXCEPTION_FLAGS = -fno-exceptions -fno-rtti -fasynchronous-unwind-tables
 
-ALIASING_FLAGS = @aliasing_flags@
+ALIASING_FLAGS = 
 
 # This is set by --disable-maintainer-mode (default) to "#"
 # FIXME: 'MAINT' will always be set to an empty string, no matter if
@@ -195,17 +197,17 @@ ALIASING_FLAGS = @aliasing_flags@
 # following will expand to "MAINT := " in maintainer mode, and to
 # "MAINT := #" in non-maintainer mode, but because '#' starts a comment,
 # they mean exactly the same thing for make.
-MAINT := @MAINT@
+MAINT := #
 
 # The following provides the variable ENABLE_MAINTAINER_RULES that can
 # be used in language Make-lang.in makefile fragments to enable
 # maintainer rules.  So, ENABLE_MAINTAINER_RULES is 'true' in
 # maintainer mode, and '' otherwise.
-@MAINT@ ENABLE_MAINTAINER_RULES = true
+# ENABLE_MAINTAINER_RULES = true
 
 # These are set by --enable-checking=valgrind.
-RUN_GEN = @valgrind_command@
-VALGRIND_DRIVER_DEFINES = @valgrind_path_defines@
+RUN_GEN = 
+VALGRIND_DRIVER_DEFINES = 
 
 # This is how we control whether or not the additional warnings are applied.
 .-warn = $(STRICT_WARN)
@@ -230,26 +232,26 @@ dfp.o-warn = -Wno-strict-aliasing
 # isn't gcc; configure determines that.  WARN_CFLAGS will be either
 # $(GCC_WARN_CFLAGS), or nothing.  Similarly, WARN_CXXFLAGS will be
 # either $(GCC_WARN_CXXFLAGS), or nothing.
-WARN_CFLAGS = @warn_cflags@
-WARN_CXXFLAGS = @warn_cxxflags@
+WARN_CFLAGS = $(GCC_WARN_CFLAGS)
+WARN_CXXFLAGS = $(GCC_WARN_CXXFLAGS)
 
-CPPFLAGS = @CPPFLAGS@
+CPPFLAGS = 
 
-AWK = @AWK@
-CC = @CC@
-CXX = @CXX@
-BISON = @BISON@
+AWK = /usr/bin/gawk
+CC = gcc
+CXX = g++
+BISON = bison
 BISONFLAGS =
-FLEX = @FLEX@
+FLEX = flex
 FLEXFLAGS =
-AR = @AR@
+AR = ar
 AR_FLAGS = rc
-NM = @NM@
-RANLIB = @RANLIB@
-RANLIB_FLAGS = @ranlib_flags@
+NM = nm
+RANLIB = ranlib
+RANLIB_FLAGS = 
 
 # Libraries to use on the host.
-HOST_LIBS = @HOST_LIBS@
+HOST_LIBS = 
 
 # The name of the compiler to use.
 COMPILER = $(CXX)
@@ -267,12 +269,12 @@ LINKER_FLAGS = $(CFLAGS)
 endif
 
 # Enable Intel CET on Intel CET enabled host if needed.
-CET_HOST_FLAGS = @CET_HOST_FLAGS@
+CET_HOST_FLAGS = 
 COMPILER += $(CET_HOST_FLAGS)
 
-NO_PIE_CFLAGS = @NO_PIE_CFLAGS@
-NO_PIE_FLAG = @NO_PIE_FLAG@
-DO_LINK_MUTEX = @DO_LINK_MUTEX@
+NO_PIE_CFLAGS = -fno-PIE
+NO_PIE_FLAG = -no-pie
+DO_LINK_MUTEX = false
 
 # We don't want to compile the compilers with -fPIE, it make PCH fail.
 COMPILER += $(NO_PIE_CFLAGS)
@@ -281,13 +283,13 @@ COMPILER += $(NO_PIE_CFLAGS)
 LINKER += $(NO_PIE_FLAG)
 
 # Like LINKER, but use a mutex for serializing front end links.
-ifeq (@DO_LINK_MUTEX@,true)
+ifeq (false,true)
 LLINKER = $(SHELL) $(srcdir)/lock-and-run.sh linkfe.lck $(LINKER)
 else
 LLINKER = $(LINKER)
 endif
 
-THIN_ARCHIVE_SUPPORT = @thin_archive_support@
+THIN_ARCHIVE_SUPPORT = yes
 
 USE_THIN_ARCHIVES = no
 ifeq ($(THIN_ARCHIVE_SUPPORT),yes)
@@ -302,7 +304,7 @@ endif
 # Programs which operate on the build machine
 # -------------------------------------------
 
-SHELL = @SHELL@
+SHELL = /bin/bash
 # pwd command to use.  Allow user to override default by setting PWDCMD in
 # the environment to account for automounters.  The make variable must not
 # be called PWDCMD, otherwise the value set here is passed to make
@@ -311,18 +313,18 @@ SHELL = @SHELL@
 # don't want to corrupt it.
 PWD_COMMAND = $${PWDCMD-pwd}
 # on sysV, define this as cp.
-INSTALL = @INSTALL@
+INSTALL = /usr/bin/install -c
 # Some systems may be missing symbolic links, regular links, or both.
 # Allow configure to check this and use "ln -s", "ln", or "cp" as appropriate.
-LN=@LN@
-LN_S=@LN_S@
+LN=ln
+LN_S=ln -s
 # These permit overriding just for certain files.
-INSTALL_PROGRAM = @INSTALL_PROGRAM@
-INSTALL_DATA = @INSTALL_DATA@
-INSTALL_SCRIPT = @INSTALL@
+INSTALL_PROGRAM = /usr/bin/install -c
+INSTALL_DATA = /usr/bin/install -c -m 644
+INSTALL_SCRIPT = /usr/bin/install -c
 install_sh = $(SHELL) $(srcdir)/../install-sh
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-MAKEINFO = @MAKEINFO@
+MAKEINFO = makeinfo --split-size=5000000
 MAKEINFOFLAGS = --no-split
 TEXI2DVI = texi2dvi
 TEXI2PDF = texi2pdf
@@ -336,10 +338,10 @@ STAMP = echo timestamp >
 # If necessary (e.g., when using the MSYS shell on Microsoft Windows)
 # translate the shell's notion of absolute pathnames to the native
 # spelling.
-build_file_translate = @build_file_translate@
+build_file_translate = 
 
 # Make sure the $(MAKE) variable is defined.
-@SET_MAKE@
+
 
 # Locate mkinstalldirs.
 mkinstalldirs=$(SHELL) $(srcdir)/../mkinstalldirs
@@ -363,15 +365,15 @@ write_entries_to_file = $(shell rm -f $(2) || :) $(shell touch $(2)) \
 # The jit documentation looks better if built with sphinx, but can be
 # built with texinfo if sphinx is not available.
 # configure sets "doc_build_sys" to "sphinx" or "texinfo" accordingly
-doc_build_sys=@doc_build_sys@
+doc_build_sys=texinfo
 
 # --------
 # UNSORTED
 # --------
 
 # Dependency tracking stuff.
-CXXDEPMODE = @CXXDEPMODE@
-DEPDIR = @DEPDIR@
+CXXDEPMODE = depmode=gcc3
+DEPDIR = .deps
 depcomp = $(SHELL) $(srcdir)/../depcomp
 
 # In the past we used AC_PROG_CC_C_O and set this properly, but
@@ -382,47 +384,47 @@ OUTPUT_OPTION = -o $@
 # This is where we get zlib from.  zlibdir is -L../zlib and zlibinc is
 # -I../zlib, unless we were configured with --with-system-zlib, in which
 # case both are empty.
-ZLIB = @zlibdir@ -lz
-ZLIBINC = @zlibinc@
+ZLIB =  -lz
+ZLIBINC = 
 
 # How to find GMP
-GMPLIBS = @GMPLIBS@
-GMPINC = @GMPINC@
+GMPLIBS = -lmpc -lmpfr -lgmp
+GMPINC = 
 
 # How to find isl.
-ISLLIBS = @ISLLIBS@
-ISLINC = @ISLINC@
+ISLLIBS = 
+ISLINC = 
 
 # Set to 'yes' if the LTO front end is enabled.
-enable_lto = @enable_lto@
+enable_lto = yes
 
 # Compiler and flags needed for plugin support
-PLUGINCC = @CXX@
-PLUGINCFLAGS = @CXXFLAGS@
+PLUGINCC = g++
+PLUGINCFLAGS =    
 
 # Libs and linker options needed for plugin support
-PLUGINLIBS = @pluginlibs@
+PLUGINLIBS = -rdynamic -ldl
 
-enable_plugin = @enable_plugin@
+enable_plugin = yes
 
 # On MinGW plugin installation involves installing import libraries.
 ifeq ($(enable_plugin),yes)
   plugin_implib := $(if $(strip $(filter mingw%,$(host_os))),yes,no)
 endif
 
-enable_host_shared = @enable_host_shared@
+enable_host_shared = 
 
-enable_as_accelerator = @enable_as_accelerator@
+enable_as_accelerator = 
 
 CPPLIB = ../libcpp/libcpp.a
 CPPINC = -I$(srcdir)/../libcpp/include
 
 CODYLIB = ../libcody/libcody.a
 CODYINC = -I$(srcdir)/../libcody
-NETLIBS = @NETLIBS@
+NETLIBS = 
 
 # Where to find decNumber
-enable_decimal_float = @enable_decimal_float@
+enable_decimal_float = dpd
 DECNUM = $(srcdir)/../libdecnumber
 DECNUMFMT = $(srcdir)/../libdecnumber/$(enable_decimal_float)
 DECNUMINC = -I$(DECNUM) -I$(DECNUMFMT) -I../libdecnumber
@@ -435,7 +437,7 @@ LIBBACKTRACE = ../libbacktrace/.libs/libbacktrace.a
 
 # Target to use when installing include directory.  Either
 # install-headers-tar, install-headers-cpio or install-headers-cp.
-INSTALL_HEADERS_DIR = @build_install_headers_dir@
+INSTALL_HEADERS_DIR = install-headers-tar
 
 # Header files that are made available under the same name
 # to programs compiled with GCC.
@@ -451,8 +453,8 @@ USER_H = $(srcdir)/ginclude/float.h \
 	 $(srcdir)/ginclude/stdatomic.h \
 	 $(EXTRA_HEADERS)
 
-USER_H_INC_NEXT_PRE = @user_headers_inc_next_pre@
-USER_H_INC_NEXT_POST = @user_headers_inc_next_post@
+USER_H_INC_NEXT_PRE = 
+USER_H_INC_NEXT_POST = 
 
 # Enable target overriding of this fragment, as in config/t-vxworks.
 T_GLIMITS_H = $(srcdir)/glimits.h
@@ -464,7 +466,7 @@ T_STDINT_GCC_H = $(srcdir)/ginclude/stdint-gcc.h
 GCC_FOR_TARGET = $(STAGE_CC_WRAPPER) ./xgcc -B./ -B$(build_tooldir)/bin/ -isystem $(build_tooldir)/include -isystem $(build_tooldir)/sys-include -L$(objdir)/../ld $(TFLAGS)
 
 # Set if the compiler was configured with --with-build-sysroot.
-SYSROOT_CFLAGS_FOR_TARGET = @SYSROOT_CFLAGS_FOR_TARGET@
+SYSROOT_CFLAGS_FOR_TARGET = 
 
 # This is used instead of ALL_CFLAGS when compiling with GCC_FOR_TARGET.
 # It specifies -B./.
@@ -489,7 +491,7 @@ AR_FLAGS_FOR_TARGET =
 AR_CREATE_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) rc
 AR_EXTRACT_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) x
 LIPO_FOR_TARGET = lipo
-ORIGINAL_AS_FOR_TARGET = @ORIGINAL_AS_FOR_TARGET@
+# ORIGINAL_AS_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/as
 RANLIB_FOR_TARGET := $(shell \
   if [ -f $(objdir)/../binutils/ranlib ] ; then \
     echo $(objdir)/../binutils/ranlib ; \
@@ -500,8 +502,8 @@ RANLIB_FOR_TARGET := $(shell \
        t='$(program_transform_name)'; echo ranlib | sed -e "$$t" ; \
     fi; \
   fi)
-ORIGINAL_LD_FOR_TARGET = @ORIGINAL_LD_FOR_TARGET@
-ORIGINAL_NM_FOR_TARGET = @ORIGINAL_NM_FOR_TARGET@
+# ORIGINAL_LD_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/ld
+# ORIGINAL_NM_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/nm
 NM_FOR_TARGET = ./nm
 STRIP_FOR_TARGET := $(shell \
   if [ -f $(objdir)/../binutils/strip-new ] ; then \
@@ -530,12 +532,12 @@ FNMATCH_H   = $(srcdir)/../include/fnmatch.h
 LINKER_PLUGIN_API_H = $(srcdir)/../include/plugin-api.h
 
 # Default native SYSTEM_HEADER_DIR, to be overridden by targets.
-NATIVE_SYSTEM_HEADER_DIR = @NATIVE_SYSTEM_HEADER_DIR@
+NATIVE_SYSTEM_HEADER_DIR = /usr/include
 # Default cross SYSTEM_HEADER_DIR, to be overridden by targets.
-ifeq (@includedir@,$(prefix)/include)
-  CROSS_SYSTEM_HEADER_DIR = @CROSS_SYSTEM_HEADER_DIR@
+ifeq (${prefix}/include,$(prefix)/include)
+  CROSS_SYSTEM_HEADER_DIR = $(gcc_tooldir)/sys-include
 else
-  CROSS_SYSTEM_HEADER_DIR = @includedir@
+  CROSS_SYSTEM_HEADER_DIR = ${prefix}/include
 endif
 
 # autoconf sets SYSTEM_HEADER_DIR to one of the above.
@@ -544,64 +546,64 @@ endif
 # The sed idiom for this is to repeat the search-and-replace until it doesn't match, using :a ... ta.
 # Use single quotes here to avoid nested double- and backquotes, this
 # macro is also used in a double-quoted context.
-SYSTEM_HEADER_DIR = `echo @SYSTEM_HEADER_DIR@ | sed -e :a -e 's,[^/]*/\.\.\/,,' -e ta`
+SYSTEM_HEADER_DIR = `echo $(CROSS_SYSTEM_HEADER_DIR) | sed -e :a -e 's,[^/]*/\.\.\/,,' -e ta`
 
 # Path to the system headers on the build machine.
-BUILD_SYSTEM_HEADER_DIR = `echo @BUILD_SYSTEM_HEADER_DIR@ | sed -e :a -e 's,[^/]*/\.\.\/,,' -e ta`
+BUILD_SYSTEM_HEADER_DIR = `echo $(CROSS_SYSTEM_HEADER_DIR) | sed -e :a -e 's,[^/]*/\.\.\/,,' -e ta`
 
 # Control whether to run fixincludes.
-STMP_FIXINC = @STMP_FIXINC@
+STMP_FIXINC = stmp-fixinc
 
 # Test to see whether <limits.h> exists in the system header files.
 LIMITS_H_TEST = [ -f $(BUILD_SYSTEM_HEADER_DIR)/limits.h ]
 
 # Directory for prefix to system directories, for
 # each of $(system_prefix)/usr/include, $(system_prefix)/usr/lib, etc.
-TARGET_SYSTEM_ROOT = @TARGET_SYSTEM_ROOT@
-TARGET_SYSTEM_ROOT_DEFINE = @TARGET_SYSTEM_ROOT_DEFINE@
+TARGET_SYSTEM_ROOT = 
+TARGET_SYSTEM_ROOT_DEFINE = 
 
-xmake_file=@xmake_file@
-tmake_file=@tmake_file@
-TM_ENDIAN_CONFIG=@TM_ENDIAN_CONFIG@
-TM_MULTILIB_CONFIG=@TM_MULTILIB_CONFIG@
-TM_MULTILIB_EXCEPTIONS_CONFIG=@TM_MULTILIB_EXCEPTIONS_CONFIG@
-out_file=$(srcdir)/config/@out_file@
-out_object_file=@out_object_file@
-common_out_file=$(srcdir)/common/config/@common_out_file@
-common_out_object_file=@common_out_object_file@
+xmake_file= $(srcdir)/config/x-linux
+tmake_file= $(srcdir)/config/arc/t-multilib $(srcdir)/config/arc/t-arc
+TM_ENDIAN_CONFIG=
+TM_MULTILIB_CONFIG=
+TM_MULTILIB_EXCEPTIONS_CONFIG=
+out_file=$(srcdir)/config/arc/arc.cc
+out_object_file=arc.o
+common_out_file=$(srcdir)/common/config/arc/arc-common.cc
+common_out_object_file=arc-common.o
 EXTRA_GTYPE_DEPS=
-md_file=$(srcdir)/common.md $(srcdir)/config/@md_file@
-tm_file_list=@tm_file_list@
-tm_include_list=@tm_include_list@
-tm_defines=@tm_defines@
-tm_p_file_list=@tm_p_file_list@
-tm_p_include_list=@tm_p_include_list@
-tm_d_file_list=@tm_d_file_list@
-tm_d_include_list=@tm_d_include_list@
-build_xm_file_list=@build_xm_file_list@
-build_xm_include_list=@build_xm_include_list@
-build_xm_defines=@build_xm_defines@
-host_xm_file_list=@host_xm_file_list@
-host_xm_include_list=@host_xm_include_list@
-host_xm_defines=@host_xm_defines@
-xm_file_list=@xm_file_list@
-xm_include_list=@xm_include_list@
-xm_defines=@xm_defines@
+md_file=$(srcdir)/common.md $(srcdir)/config/arc/arc.md
+tm_file_list=options.h $(srcdir)/config/arc/arc-arch.h $(srcdir)/config/elfos.h $(srcdir)/config/newlib-stdint.h $(srcdir)/config/arc/elf.h $(srcdir)/config/arc/arc.h $(srcdir)/config/initfini-array.h $(srcdir)/defaults.h
+tm_include_list=options.h insn-constants.h config/arc/arc-arch.h config/elfos.h config/newlib-stdint.h config/arc/elf.h config/arc/arc.h config/initfini-array.h defaults.h
+tm_defines= LIBC_GLIBC=1 LIBC_UCLIBC=2 LIBC_BIONIC=3 LIBC_MUSL=4 TARGET_CPU_BUILD=PROCESSOR_archs
+tm_p_file_list= $(srcdir)/config/arc/arc-protos.h tm-preds.h
+tm_p_include_list= config/arc/arc-protos.h tm-preds.h
+tm_d_file_list=
+tm_d_include_list=
+build_xm_file_list= auto-host.h $(srcdir)/../include/ansidecl.h
+build_xm_include_list= auto-host.h ansidecl.h
+build_xm_defines=
+host_xm_file_list= auto-host.h $(srcdir)/../include/ansidecl.h
+host_xm_include_list= auto-host.h ansidecl.h
+host_xm_defines=
+xm_file_list= auto-host.h $(srcdir)/../include/ansidecl.h
+xm_include_list= auto-host.h ansidecl.h
+xm_defines=
 lang_checks=
 lang_checks_parallelized=
-lang_opt_files=@lang_opt_files@ $(srcdir)/c-family/c.opt $(srcdir)/common.opt $(srcdir)/params.opt $(srcdir)/analyzer/analyzer.opt
-lang_specs_files=@lang_specs_files@
-lang_tree_files=@lang_tree_files@
-target_cpu_default=@target_cpu_default@
-OBJC_BOEHM_GC=@objc_boehm_gc@
-extra_modes_file=@extra_modes_file@
-extra_opt_files=@extra_opt_files@
-host_hook_obj=@out_host_hook_obj@
+lang_opt_files= $(gcc-dir)/gcc/ada/gcc-interface/lang.opt $(gcc-dir)/gcc/d/lang.opt $(gcc-dir)/gcc/fortran/lang.opt $(gcc-dir)/gcc/go/lang.opt $(gcc-dir)/gcc/lto/lang.opt $(gcc-dir)/gcc/m2/lang.opt $(gcc-dir)/gcc/rust/lang.opt $(srcdir)/c-family/c.opt $(srcdir)/common.opt $(srcdir)/params.opt $(srcdir)/analyzer/analyzer.opt
+lang_specs_files= $(gcc-dir)/gcc/cp/lang-specs.h $(gcc-dir)/gcc/lto/lang-specs.h
+lang_tree_files= $(gcc-dir)/gcc/ada/gcc-interface/ada-tree.def $(gcc-dir)/gcc/cp/cp-tree.def $(gcc-dir)/gcc/d/d-tree.def $(gcc-dir)/gcc/m2/m2-tree.def $(gcc-dir)/gcc/objc/objc-tree.def
+target_cpu_default=
+OBJC_BOEHM_GC=
+extra_modes_file=$(srcdir)/config/arc/arc-modes.def
+extra_opt_files= $(srcdir)/config/arc/arc-tables.opt $(srcdir)/config/g.opt $(srcdir)/config/arc/arc.opt
+host_hook_obj=host-linux.o
 
 # Multiarch support
-enable_multiarch = @enable_multiarch@
-with_cpu = @with_cpu@
-with_float = @with_float@
+enable_multiarch = no
+with_cpu = archs
+with_float = 
 ifeq ($(enable_multiarch),yes)
   if_multiarch = $(1)
 else
@@ -619,20 +621,20 @@ endif
 
 # Common prefix for installation directories.
 # NOTE: This directory must exist when you start installation.
-prefix = @prefix@
+# prefix = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727
 # Directory in which to put localized header files. On the systems with
 # gcc as the native cc, `local_prefix' may not be `prefix' which is
 # `/usr'.
 # NOTE: local_prefix *should not* default from prefix.
-local_prefix = @local_prefix@
+local_prefix = /usr/local
 # Directory in which to put host dependent programs and libraries
-exec_prefix = @exec_prefix@
+exec_prefix = ${prefix}
 # Directory in which to put the executable for the command `gcc'
-bindir = @bindir@
+bindir = ${exec_prefix}/bin
 # Directory in which to put the directories used by the compiler.
-libdir = @libdir@
+libdir = ${exec_prefix}/lib
 # Directory in which GCC puts its executables.
-libexecdir = @libexecdir@
+libexecdir = ${exec_prefix}/libexec
 
 # --------
 # UNSORTED
@@ -685,68 +687,68 @@ prefix_to_exec_prefix := \
   $(shell echo "$(exec_prefix)" | \
     sed -e 's|^$(prefix)||' -e 's|^/||' -e '/./s|$$|/|')
 # Directory in which to find other cross-compilation tools and headers.
-dollar = @dollar@
+dollar = 
 # Used in install-cross.
-gcc_tooldir = @gcc_tooldir@
+gcc_tooldir = $(libsubdir)/$(libsubdir_to_prefix)$(target_noncanonical)
 # Since gcc_tooldir does not exist at build-time, use -B$(build_tooldir)/bin/
 build_tooldir = $(exec_prefix)/$(target_noncanonical)
 # Directory in which the compiler finds target-independent g++ includes.
-gcc_gxx_include_dir = @gcc_gxx_include_dir@
-gcc_gxx_include_dir_add_sysroot = @gcc_gxx_include_dir_add_sysroot@
+gcc_gxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc-elf32/include/c++/$(version)
+gcc_gxx_include_dir_add_sysroot = 0
 # Directory in which the compiler finds libc++ includes.
-gcc_gxx_libcxx_include_dir = @gcc_gxx_libcxx_include_dir@
-gcc_gxx_libcxx_include_dir_add_sysroot = @gcc_gxx_libcxx_include_dir_add_sysroot@
+gcc_gxx_libcxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc-elf32/libc++_include/c++/$(version)/v1
+gcc_gxx_libcxx_include_dir_add_sysroot = 0
 # Directory to search for site-specific includes.
 local_includedir = $(local_prefix)/include
 includedir = $(prefix)/include
 # where the info files go
-infodir = @infodir@
+infodir = ${datarootdir}/info
 # Where cpp should go besides $prefix/bin if necessary
-cpp_install_dir = @cpp_install_dir@
+cpp_install_dir = 
 # where the locale files go
-datadir = @datadir@
+datadir = ${datarootdir}
 localedir = $(datadir)/locale
 # Extension (if any) to put in installed man-page filename.
 man1ext = .1
 man7ext = .7
 objext = .o
-exeext = @host_exeext@
-build_exeext = @build_exeext@
+exeext = 
+build_exeext = 
 
 # Directory in which to put man pages.
-mandir = @mandir@
+mandir = ${datarootdir}/man
 man1dir = $(mandir)/man1
 man7dir = $(mandir)/man7
 # Dir for temp files.
 tmpdir = /tmp
 
-datarootdir = @datarootdir@
-docdir = @docdir@
+datarootdir = ${prefix}/share
+docdir = ${datarootdir}/doc/${PACKAGE}
 # Directory in which to put DVIs
-dvidir = @dvidir@
+dvidir = ${docdir}
 # Directory in which to build HTML
 build_htmldir = $(objdir)/HTML/gcc-$(version)
 # Directory in which to put HTML
-htmldir = @htmldir@
+htmldir = ${docdir}
 
 # Whether we were configured with NLS.
-USE_NLS = @USE_NLS@
+USE_NLS = no
 
 # Internationalization library.
-INCINTL = @INCINTL@
-LIBINTL = @LIBINTL@
-LIBINTL_DEP = @LIBINTL_DEP@
+INCINTL = 
+LIBINTL = 
+LIBINTL_DEP = 
 
 # Character encoding conversion library.
-LIBICONV = @LIBICONV@
-LIBICONV_DEP = @LIBICONV_DEP@
+LIBICONV = 
+LIBICONV_DEP = 
 
 # If a supplementary library is being used for the GC.
 GGC_LIB=
 
 # "true" if the target C library headers are unavailable; "false"
 # otherwise.
-inhibit_libc = @inhibit_libc@
+inhibit_libc = false
 ifeq ($(inhibit_libc),true)
 INHIBIT_LIBC_CFLAGS = -Dinhibit_libc
 endif
@@ -754,29 +756,29 @@ endif
 # List of extra executables that should be compiled for this target machine
 # that are used when linking.
 # The rules for compiling them should be in the t-* file for the machine.
-EXTRA_PROGRAMS = @extra_programs@
+EXTRA_PROGRAMS = 
 
 # List of extra object files that should be compiled and linked with
 # compiler proper (cc1, cc1obj, cc1plus).
-EXTRA_OBJS = @extra_objs@
+EXTRA_OBJS =  
 
 # List of extra object files that should be compiled and linked with
 # the gcc driver.
-EXTRA_GCC_OBJS =@extra_gcc_objs@
+EXTRA_GCC_OBJS = driver-arc.o
 
 # List of extra libraries that should be linked with the gcc driver.
-EXTRA_GCC_LIBS = @EXTRA_GCC_LIBS@
+EXTRA_GCC_LIBS = 
 
 # List of additional header files to install.
-EXTRA_HEADERS =@extra_headers_list@
+EXTRA_HEADERS = $(srcdir)/config/arc/arc-simd.h $(srcdir)/ginclude/tgmath.h
 
 # How to handle <stdint.h>.
-USE_GCC_STDINT = @use_gcc_stdint@
+USE_GCC_STDINT = wrap
 
 # The configure script will set this to collect2$(exeext), except on a
 # (non-Unix) host which cannot build collect2, for which it will be
 # set to empty.
-COLLECT2 = @collect2@
+COLLECT2 = collect2$(exeext)
 
 # Program to convert libraries.
 LIBCONVERT =
@@ -785,13 +787,13 @@ LIBCONVERT =
 INSTALL_HEADERS=install-headers install-mkheaders
 
 # Control whether Info documentation is built and installed.
-BUILD_INFO = @BUILD_INFO@
+BUILD_INFO = info
 
 # Control flags for @contents placement in HTML output
-MAKEINFO_TOC_INLINE_FLAG = @MAKEINFO_TOC_INLINE_FLAG@
+MAKEINFO_TOC_INLINE_FLAG = -c CONTENTS_OUTPUT_LOCATION=inline
 
 # Control whether manpages generated by texi2pod.pl can be rebuilt.
-GENERATED_MANPAGES = @GENERATED_MANPAGES@
+GENERATED_MANPAGES = generated-manpages
 
 # Additional directories of header files to run fixincludes on.
 # These should be directories searched automatically by default
@@ -802,7 +804,7 @@ GENERATED_MANPAGES = @GENERATED_MANPAGES@
 OTHER_FIXINCLUDES_DIRS=
 
 # A list of all the language-specific executables.
-COMPILERS = @all_compilers@
+COMPILERS =  gnat1$(exeext) cc1$(exeext) cc1plus$(exeext) d21$(exeext) f951$(exeext) go1$(exeext)  lto1$(exeext) cc1gm2$(exeext) cc1obj$(exeext) cc1objplus$(exeext) rust1$(exeext)
 
 # List of things which should already be built whenever we try to use xgcc
 # to compile anything (without linking).
@@ -812,10 +814,10 @@ GCC_PASSES=xgcc$(exeext) specs
 DIR = ../gcc
 
 # Native compiler for the build machine and its switches.
-CC_FOR_BUILD = @CC_FOR_BUILD@
-CXX_FOR_BUILD = @CXX_FOR_BUILD@
-BUILD_CFLAGS= @BUILD_CFLAGS@ $(GENERATOR_CFLAGS) -DGENERATOR_FILE
-BUILD_CXXFLAGS = @BUILD_CXXFLAGS@ $(GENERATOR_CFLAGS) -DGENERATOR_FILE
+CC_FOR_BUILD = $(CC)
+CXX_FOR_BUILD = $(CXX)
+BUILD_CFLAGS= $(ALL_CFLAGS) $(GENERATOR_CFLAGS) -DGENERATOR_FILE
+BUILD_CXXFLAGS = $(ALL_CXXFLAGS) $(GENERATOR_CFLAGS) -DGENERATOR_FILE
 
 # Native compiler that we use.  This may be C++ some day.
 COMPILER_FOR_BUILD = $(CXX_FOR_BUILD)
@@ -826,7 +828,7 @@ LINKER_FOR_BUILD = $(CXX_FOR_BUILD)
 BUILD_LINKERFLAGS = $(BUILD_CXXFLAGS)
 
 # Native linker and preprocessor flags.  For x-fragment overrides.
-BUILD_LDFLAGS=@BUILD_LDFLAGS@
+BUILD_LDFLAGS=$(LDFLAGS)
 BUILD_CPPFLAGS= -I. -I$(@D) -I$(srcdir) -I$(srcdir)/$(@D) \
 		-I$(srcdir)/../include $(INCINTL) $(CPPINC) $(CPPFLAGS)
 
@@ -863,7 +865,7 @@ OPTIONS_H_EXTRA =
 # the .opt files
 OPTIONS_C_EXTRA = $(PRETTY_PRINT_H)
 
-@option_includes@
+OPTIONS_H_EXTRA += $(srcdir)/config/arc/arc-opts.h
 
 # End of variables for you to override.
 
@@ -895,7 +897,7 @@ else
 REVISION_c  := $(shell cat $(REVISION))
 endif
 
-version     := $(shell @get_gcc_base_ver@ $(BASEVER))
+version     := $(shell cat $(BASEVER))
 
 PATCHLEVEL_c := \
   $(shell echo $(BASEVER_c) | sed -e 's/^[0-9]*\.[0-9]*\.\([0-9]*\)$$/\1/')
@@ -911,11 +913,11 @@ BASEVER_s   := "\"$(BASEVER_c)\""
 DEVPHASE_s  := "\"$(if $(DEVPHASE_c), ($(DEVPHASE_c)))\""
 DATESTAMP_s := \
   "\"$(if $(DEVPHASE_c)$(filter-out 0,$(PATCHLEVEL_c)), $(DATESTAMP_c))\""
-PKGVERSION_s:= "\"@PKGVERSION@\""
-BUGURL_s    := "\"@REPORT_BUGS_TO@\""
+PKGVERSION_s:= "\"(GCC) \""
+BUGURL_s    := "\"<https://gcc.gnu.org/bugs/>\""
 
-PKGVERSION  := @PKGVERSION@
-BUGURL_TEXI := @REPORT_BUGS_TEXI@
+PKGVERSION  := (GCC) 
+BUGURL_TEXI := @uref{https://gcc.gnu.org/bugs/}
 
 ifdef REVISION_c
 REVISION_s  := \
@@ -1050,17 +1052,17 @@ RTL_SSA_H = $(PRETTY_PRINT_H) insn-config.h splay-tree-utils.h \
 # programs built during a bootstrap.
 # autoconf inserts -DCROSS_DIRECTORY_STRUCTURE if we are building a
 # cross compiler which does not use the native headers and libraries.
-INTERNAL_CFLAGS = -DIN_GCC $(PICFLAG) @CROSS@
+INTERNAL_CFLAGS = -DIN_GCC $(PICFLAG) -DCROSS_DIRECTORY_STRUCTURE
 
 # This is the variable actually used when we compile. If you change this,
 # you probably want to update BUILD_CFLAGS in configure.ac
 ALL_CFLAGS = $(T_CFLAGS) $(CFLAGS-$@) \
-  $(CFLAGS) $(INTERNAL_CFLAGS) $(COVERAGE_FLAGS) $(WARN_CFLAGS) @DEFS@
+  $(CFLAGS) $(INTERNAL_CFLAGS) $(COVERAGE_FLAGS) $(WARN_CFLAGS) -DHAVE_CONFIG_H
 
 # The C++ version.
 ALL_CXXFLAGS = $(T_CFLAGS) $(CFLAGS-$@) $(CXXFLAGS) $(INTERNAL_CFLAGS) \
   $(COVERAGE_FLAGS) $(ALIASING_FLAGS) $(NOEXCEPTION_FLAGS) \
-  $(WARN_CXXFLAGS) @DEFS@
+  $(WARN_CXXFLAGS) -DHAVE_CONFIG_H
 
 # Likewise.  Put INCLUDES at the beginning: this way, if some autoconf macro
 # puts -I options in CPPFLAGS, our include files in the srcdir will always
@@ -1096,26 +1098,26 @@ BUILD_LIBDEPS= $(BUILD_LIBIBERTY)
 
 # How to link with both our special library facilities
 # and the system's installed libraries.
-LIBS = @LIBS@ libcommon.a $(CPPLIB) $(LIBINTL) $(LIBICONV) $(LIBBACKTRACE) \
+LIBS =  libcommon.a $(CPPLIB) $(LIBINTL) $(LIBICONV) $(LIBBACKTRACE) \
 	$(LIBIBERTY) $(LIBDECNUMBER) $(HOST_LIBS)
 BACKENDLIBS = $(ISLLIBS) $(GMPLIBS) $(PLUGINLIBS) $(HOST_LIBS) \
 	$(ZLIB) $(ZSTD_LIB)
 # Any system libraries needed just for GNAT.
-SYSLIBS = @GNAT_LIBEXC@
+SYSLIBS = 
 
 # Used from ada/gcc-interface/Make-lang.in
-GNATBIND = @GNATBIND@
-GNATMAKE = @GNATMAKE@
+GNATBIND = no
+GNATMAKE = no
 
 # Used from d/Make-lang.in
-GDC = @GDC@
-GDCFLAGS = @GDCFLAGS@
+GDC = no
+GDCFLAGS = 
 
 # Libs needed (at present) just for jcf-dump.
-LDEXP_LIB = @LDEXP_LIB@
+LDEXP_LIB = 
 
-ZSTD_INC = @ZSTD_CPPFLAGS@
-ZSTD_LIB = @ZSTD_LDFLAGS@ @ZSTD_LIB@
+ZSTD_INC = 
+ZSTD_LIB =  
 
 # Likewise, for use in the tools that must run on this machine
 # even if we are cross-building GCC.
@@ -1161,12 +1163,12 @@ endif
 # Support for additional languages (other than C).
 # C can be supported this way too (leave for later).
 
-LANG_CONFIGUREFRAGS  = @all_lang_configurefrags@
-LANG_MAKEFRAGS = @all_lang_makefrags@
+LANG_CONFIGUREFRAGS  =  $(srcdir)/ada/gcc-interface/config-lang.in $(srcdir)/c/config-lang.in $(srcdir)/cp/config-lang.in $(srcdir)/d/config-lang.in $(srcdir)/fortran/config-lang.in $(srcdir)/go/config-lang.in $(srcdir)/jit/config-lang.in $(srcdir)/lto/config-lang.in $(srcdir)/m2/config-lang.in $(srcdir)/objc/config-lang.in $(srcdir)/objcp/config-lang.in $(srcdir)/rust/config-lang.in
+LANG_MAKEFRAGS = $(srcdir)/c/Make-lang.in  $(srcdir)/ada/gcc-interface/Make-lang.in $(srcdir)/cp/Make-lang.in $(srcdir)/d/Make-lang.in $(srcdir)/fortran/Make-lang.in $(srcdir)/go/Make-lang.in $(srcdir)/jit/Make-lang.in $(srcdir)/lto/Make-lang.in $(srcdir)/m2/Make-lang.in $(srcdir)/objc/Make-lang.in $(srcdir)/objcp/Make-lang.in $(srcdir)/rust/Make-lang.in
 
 # Used by gcc/jit/Make-lang.in
-LD_VERSION_SCRIPT_OPTION = @ld_version_script_option@
-LD_SONAME_OPTION = @ld_soname_option@
+LD_VERSION_SCRIPT_OPTION = --version-script
+LD_SONAME_OPTION = -soname
 
 # Flags to pass to recursive makes.
 # CC is set by configure.
@@ -1231,16 +1233,16 @@ FLAGS_TO_PASS = \
 ALL_OPT_FILES=$(lang_opt_files) $(extra_opt_files)
 
 # Target specific, C specific object file
-C_TARGET_OBJS=@c_target_objs@
+C_TARGET_OBJS=arc-c.o default-c.o
 
 # Target specific, C++ specific object file
-CXX_TARGET_OBJS=@cxx_target_objs@
+CXX_TARGET_OBJS=arc-c.o default-c.o
 
 # Target specific, D specific object file
-D_TARGET_OBJS=@d_target_objs@
+D_TARGET_OBJS= default-d.o
 
 # Target specific, Fortran specific object file
-FORTRAN_TARGET_OBJS=@fortran_target_objs@
+FORTRAN_TARGET_OBJS=
 
 # Object files for gcc many-languages driver.
 GCC_OBJS = gcc.o gcc-main.o ggc-none.o
@@ -1796,7 +1798,7 @@ BACKEND = libbackend.a main.o libcommon-target.a libcommon.a \
 
 # This is defined to "yes" if Tree checking is enabled, which roughly means
 # front-end checking.
-TREECHECKING = @TREECHECKING@
+TREECHECKING = 
 
 # The full name of the driver on installation
 FULL_DRIVER_NAME=$(target_noncanonical)-gcc-$(version)$(exeext)
@@ -1830,7 +1832,7 @@ $(FULL_DRIVER_NAME): ./xgcc$(exeext)
 # Otherwise $(SELFTEST_DEPS) is empty when used from <LANG>/Make-lang.in.
 SELFTEST_DEPS = $(GCC_PASSES) stmp-int-hdrs $(srcdir)/testsuite/selftests
 
-DO_LINK_SERIALIZATION = @DO_LINK_SERIALIZATION@
+DO_LINK_SERIALIZATION = 
 
 # Language makefile fragments.
 
@@ -1847,7 +1849,43 @@ DO_LINK_SERIALIZATION = @DO_LINK_SERIALIZATION@
 # double-colon rules should be preferred for any new hooks.
 
 # language hooks, generated by configure
-@language_hooks@
+lang.all.cross:  c.all.cross c++.all.cross lto.all.cross
+lang.start.encap:  c.start.encap c++.start.encap lto.start.encap
+lang.rest.encap:  c.rest.encap c++.rest.encap lto.rest.encap
+lang.tags:  c.tags c++.tags lto.tags
+lang.install-common:  c.install-common c++.install-common lto.install-common
+lang.install-man:  c.install-man c++.install-man lto.install-man
+lang.install-info:  c.install-info c++.install-info lto.install-info
+lang.install-dvi:  c.install-dvi c++.install-dvi lto.install-dvi
+lang.install-pdf:  c.install-pdf c++.install-pdf lto.install-pdf
+lang.install-html:  c.install-html c++.install-html lto.install-html
+lang.dvi:  c.dvi c++.dvi lto.dvi
+lang.pdf:  c.pdf c++.pdf lto.pdf
+lang.html:  c.html c++.html lto.html
+lang.uninstall:  c.uninstall c++.uninstall lto.uninstall
+lang.info:  c.info c++.info lto.info
+lang.man:  c.man c++.man lto.man
+lang.srcextra:  c.srcextra c++.srcextra lto.srcextra
+lang.srcman:  c.srcman c++.srcman lto.srcman
+lang.srcinfo:  c.srcinfo c++.srcinfo lto.srcinfo
+lang.mostlyclean:  c.mostlyclean c++.mostlyclean lto.mostlyclean
+lang.clean:  c.clean c++.clean lto.clean
+lang.distclean:  c.distclean c++.distclean lto.distclean
+lang.maintainer-clean:  c.maintainer-clean c++.maintainer-clean lto.maintainer-clean
+lang.install-plugin:  c.install-plugin c++.install-plugin lto.install-plugin
+ifeq ($(DO_LINK_SERIALIZATION),)
+SERIAL_LIST =
+else
+SERIAL_LIST = $(wordlist $(DO_LINK_SERIALIZATION),3, lto1 c++ c)
+endif
+SERIAL_COUNT = 4
+INDEX.c = 0
+c++.prev = $(if $(word 3,$(SERIAL_LIST)),$($(word 3,$(SERIAL_LIST)).serial))
+INDEX.c++ = 1
+lto1.prev = $(if $(word 2,$(SERIAL_LIST)),$($(word 2,$(SERIAL_LIST)).serial))
+INDEX.lto1 = 2
+lto2.prev = $(if $(word 1,$(SERIAL_LIST)),$($(word 1,$(SERIAL_LIST)).serial))
+INDEX.lto2 = 3
 
 ifeq ($(DO_LINK_SERIALIZATION),)
 LINK_PROGRESS = :
@@ -1868,7 +1906,7 @@ endif
 
 # Wire in install-gnatlib invocation with `make install' for a configuration
 # with top-level libada disabled.
-gnat_install_lib = @gnat_install_lib@
+gnat_install_lib = 
 
 # per-language makefile fragments
 -include $(LANG_MAKEFRAGS)
@@ -1944,11 +1982,11 @@ $(foreach file,$(ALL_HOST_FRONTEND_OBJS),$(eval CFLAGS-$(file) += -DIN_GCC_FRONT
 # This is what is done in this makefile. Note that mkconfig.sh has a
 # move-if-change built-in
 
-Makefile: config.status $(srcdir)/Makefile.in $(LANG_MAKEFRAGS)
-	LANGUAGES="$(CONFIG_LANGUAGES)" \
-	CONFIG_HEADERS= \
-	CONFIG_SHELL="$(SHELL)" \
-	CONFIG_FILES=$@ $(SHELL) config.status
+# Makefile: config.status $(srcdir)/Makefile.in $(LANG_MAKEFRAGS)
+# 	LANGUAGES="$(CONFIG_LANGUAGES)" \
+# 	CONFIG_HEADERS= \
+# 	CONFIG_SHELL="$(SHELL)" \
+# 	CONFIG_FILES=$@ $(SHELL) config.status
 
 config.h: cs-config.h ; @true
 bconfig.h: cs-bconfig.h ; @true
@@ -2022,10 +2060,10 @@ aclocal_deps = \
 	$(srcdir)/../config/zlib.m4 \
 	$(srcdir)/acinclude.m4
 
-$(srcdir)/configure: @MAINT@ $(srcdir)/configure.ac $(srcdir)/aclocal.m4
+$(srcdir)/configure: # $(srcdir)/configure.ac $(srcdir)/aclocal.m4
 	(cd $(srcdir) && $(AUTOCONF))
 
-$(srcdir)/aclocal.m4 : @MAINT@ $(aclocal_deps)
+$(srcdir)/aclocal.m4 : # $(aclocal_deps)
 	(cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS))
 
 # cstamp-h.in controls rebuilding of config.in.
@@ -2040,12 +2078,12 @@ $(srcdir)/aclocal.m4 : @MAINT@ $(aclocal_deps)
 
 # Don't run autoheader automatically either.
 # Only run it if maintainer mode is enabled.
-@MAINT@ AUTOHEADER = autoheader
-@MAINT@ $(srcdir)/config.in: $(srcdir)/cstamp-h.in
-@MAINT@ $(srcdir)/cstamp-h.in: $(srcdir)/configure.ac
-@MAINT@	(cd $(srcdir) && $(AUTOHEADER))
-@MAINT@	@rm -f $(srcdir)/cstamp-h.in
-@MAINT@	echo timestamp > $(srcdir)/cstamp-h.in
+# AUTOHEADER = autoheader
+# $(srcdir)/config.in: $(srcdir)/cstamp-h.in
+# $(srcdir)/cstamp-h.in: $(srcdir)/configure.ac
+#	(cd $(srcdir) && $(AUTOHEADER))
+#	@rm -f $(srcdir)/cstamp-h.in
+#	echo timestamp > $(srcdir)/cstamp-h.in
 auto-host.h: cstamp-h ; @true
 cstamp-h: config.in config.status
 	CONFIG_HEADERS=auto-host.h:config.in \
@@ -2055,10 +2093,10 @@ cstamp-h: config.in config.status
 # On configurations that require auto-build.h, it is created while
 # running configure, so make config.status depend on it, so that
 # config.status --recheck runs and updates or creates it.
-@HAVE_AUTO_BUILD@auto-build.h: $(srcdir)/configure $(srcdir)/config.gcc
-@HAVE_AUTO_BUILD@	@if test -f $@; then echo rerunning config.status to update $@; \
-@HAVE_AUTO_BUILD@	else echo rerunning config.status to update $@; fi
-@HAVE_AUTO_BUILD@config.status: auto-build.h
+# auto-build.h: $(srcdir)/configure $(srcdir)/config.gcc
+# 	@if test -f $@; then echo rerunning config.status to update $@; \
+# 	else echo rerunning config.status to update $@; fi
+# config.status: auto-build.h
 
 # Really, really stupid make features, such as SUN's KEEP_STATE, may force
 # a target to build even if it is up-to-date.  So we must verify that
@@ -2083,15 +2121,15 @@ quickstrap: all
 all.internal: start.encap rest.encap doc selftest
 # This is what to compile if making a cross-compiler.
 all.cross: native gcc-cross$(exeext) cpp$(exeext) specs \
-	libgcc-support lang.all.cross doc selftest @GENINSRC@ srcextra
+	libgcc-support lang.all.cross doc selftest # srcextra
 # This is what must be made before installing GCC and converting libraries.
 start.encap: native xgcc$(exeext) cpp$(exeext) specs \
-	libgcc-support lang.start.encap @GENINSRC@ srcextra
+	libgcc-support lang.start.encap # srcextra
 # These can't be made until after GCC can run.
 rest.encap: lang.rest.encap
 # This is what is made with the host's compiler
 # whether making a cross compiler or not.
-native: config.status auto-host.h build-@POSUB@ $(LANGUAGES) \
+native: config.status auto-host.h build- $(LANGUAGES) \
 	$(EXTRA_PROGRAMS) $(COLLECT2) lto-wrapper$(exeext) \
 	gcc-ar$(exeext) gcc-nm$(exeext) gcc-ranlib$(exeext)
 
@@ -2128,7 +2166,7 @@ SELFTEST_FLAGS = -nostdinc $(DEVNULL) -S -o $(DEVNULL) \
 # require the selftests to be run by defining their selftest-<LANG> as
 # s-selftest-<LANG>.  Otherwise, they should define it as empty.
 
-SELFTEST_TARGETS = @selftest_languages@
+SELFTEST_TARGETS =  selftest-c selftest-c++ selftest-lto
 selftest: $(SELFTEST_TARGETS)
 
 # Recompile all the language-independent object files.
@@ -2201,7 +2239,7 @@ libgcc.mvars: config.status Makefile specs xgcc$(exeext)
 	echo GCC_CFLAGS = '$(GCC_CFLAGS)' >> tmp-libgcc.mvars
 	echo INHIBIT_LIBC_CFLAGS = '$(INHIBIT_LIBC_CFLAGS)' >> tmp-libgcc.mvars
 	echo TARGET_SYSTEM_ROOT = '$(TARGET_SYSTEM_ROOT)' >> tmp-libgcc.mvars
-	if test @enable_default_pie@ = yes; then \
+	if test no = yes; then \
 	  NO_PIE_CFLAGS="-fno-PIE"; \
 	else \
 	  NO_PIE_CFLAGS=; \
@@ -2215,7 +2253,7 @@ libgcc.mvars: config.status Makefile specs xgcc$(exeext)
 # switches.
 multilib.h: s-mlib; @true
 s-mlib: $(srcdir)/genmultilib Makefile
-	if test @enable_multilib@ = yes \
+	if test no = yes \
 	   || test -n "$(MULTILIB_OSDIRNAMES)"; then \
 	  $(SHELL) $(srcdir)/genmultilib \
 	    "$(MULTILIB_OPTIONS)" \
@@ -2228,7 +2266,7 @@ s-mlib: $(srcdir)/genmultilib Makefile
 	    "$(MULTILIB_REQUIRED)" \
 	    "$(if $(MULTILIB_OSDIRNAMES),,$(MULTIARCH_DIRNAME))" \
 	    "$(MULTILIB_REUSE)" \
-	    "@enable_multilib@" \
+	    "no" \
 	    > tmp-mlib.h; \
 	else \
 	  $(SHELL) $(srcdir)/genmultilib '' '' '' '' '' '' '' '' \
@@ -2249,7 +2287,7 @@ gcc.srcextra: gengtype-lex.cc
 	-cp -p $^ $(srcdir)
 
 AR_OBJS = file-find.o
-AR_LIBS = @COLLECT2_LIBS@
+AR_LIBS = 
 
 gcc-ar$(exeext): gcc-ar.o $(AR_OBJS) $(LIBDEPS)
 	+$(LINKER) $(ALL_LINKERFLAGS) $(LDFLAGS) gcc-ar.o -o $@ \
@@ -2265,15 +2303,15 @@ gcc-ranlib$(exeext): gcc-ranlib.o $(AR_OBJS) $(LIBDEPS)
 
 CFLAGS-gcc-ar.o += $(DRIVER_DEFINES) \
 	-DTARGET_MACHINE=\"$(target_noncanonical)\" \
-	@TARGET_SYSTEM_ROOT_DEFINE@ -DPERSONALITY=\"ar\"
+	 -DPERSONALITY=\"ar\"
 
 CFLAGS-gcc-ranlib.o += $(DRIVER_DEFINES) \
 	-DTARGET_MACHINE=\"$(target_noncanonical)\" \
-	@TARGET_SYSTEM_ROOT_DEFINE@ -DPERSONALITY=\"ranlib\"
+	 -DPERSONALITY=\"ranlib\"
 
 CFLAGS-gcc-nm.o += $(DRIVER_DEFINES) \
 	-DTARGET_MACHINE=\"$(target_noncanonical)\" \
-	@TARGET_SYSTEM_ROOT_DEFINE@ -DPERSONALITY=\"nm\"
+	 -DPERSONALITY=\"nm\"
 
 # ??? the implicit rules dont trigger if the source file has a different name
 # so copy instead
@@ -2285,7 +2323,7 @@ gcc-nm.cc: gcc-ar.cc
 
 COLLECT2_OBJS = collect2.o collect2-aix.o vec.o ggc-none.o \
   collect-utils.o file-find.o hash-table.o selftest.o
-COLLECT2_LIBS = @COLLECT2_LIBS@
+COLLECT2_LIBS = 
 collect2$(exeext): $(COLLECT2_OBJS) $(LIBDEPS)
 # Don't try modifying collect2 (aka ld) in place--it might be linking this.
 	+$(LINKER) $(ALL_LINKERFLAGS) $(LDFLAGS) -o T$@ \
@@ -2293,7 +2331,7 @@ collect2$(exeext): $(COLLECT2_OBJS) $(LIBDEPS)
 	mv -f T$@ $@
 
 CFLAGS-collect2.o += -DTARGET_MACHINE=\"$(target_noncanonical)\" \
-	@TARGET_SYSTEM_ROOT_DEFINE@
+	
 
 LTO_WRAPPER_OBJS = lto-wrapper.o collect-utils.o ggc-none.o
 lto-wrapper$(exeext): $(LTO_WRAPPER_OBJS) libcommon-target.a $(LIBDEPS)
@@ -2303,7 +2341,7 @@ lto-wrapper$(exeext): $(LTO_WRAPPER_OBJS) libcommon-target.a $(LIBDEPS)
 
 # Files used by all variants of C or by the stand-alone pre-processor.
 
-CFLAGS-c-family/c-opts.o += @TARGET_SYSTEM_ROOT_DEFINE@
+CFLAGS-c-family/c-opts.o += 
 
 CFLAGS-c-family/c-pch.o += -DHOST_MACHINE=\"$(host)\" \
 	-DTARGET_MACHINE=\"$(target)\"
@@ -2335,10 +2373,10 @@ DRIVER_DEFINES = \
   -DSTANDARD_BINDIR_PREFIX=\"$(bindir)/\" \
   -DTOOLDIR_BASE_PREFIX=\"$(libsubdir_to_prefix)$(prefix_to_exec_prefix)\" \
   -DACCEL_DIR_SUFFIX=\"$(accel_dir_suffix)\" \
-  @TARGET_SYSTEM_ROOT_DEFINE@ \
+   \
   $(VALGRIND_DRIVER_DEFINES) \
-  $(if $(SHLIB),$(if $(filter yes,@enable_shared@),-DENABLE_SHARED_LIBGCC)) \
-  -DCONFIGURE_SPECS="\"@CONFIGURE_SPECS@\"" \
+  $(if $(SHLIB),$(if $(filter yes,no),-DENABLE_SHARED_LIBGCC)) \
+  -DCONFIGURE_SPECS="\"\"" \
   -DTOOL_INCLUDE_DIR=\"$(gcc_tooldir)/include\" \
   -DNATIVE_SYSTEM_HEADER_DIR=\"$(NATIVE_SYSTEM_HEADER_DIR)\"
 
@@ -2759,7 +2797,7 @@ GTFILES = $(CPPLIB_H) $(srcdir)/input.h $(srcdir)/coretypes.h \
   $(srcdir)/calls.cc \
   $(srcdir)/omp-general.h \
   $(srcdir)/analyzer/analyzer-language.cc \
-  @all_gtfiles@
+   [ada] $(srcdir)/ada/gcc-interface/ada-tree.h $(srcdir)/ada/gcc-interface/gigi.h $(srcdir)/ada/gcc-interface/decl.cc $(srcdir)/ada/gcc-interface/trans.cc $(srcdir)/ada/gcc-interface/utils.cc $(srcdir)/ada/gcc-interface/misc.cc [c] $(srcdir)/c/c-lang.cc $(srcdir)/c/c-tree.h $(srcdir)/c/c-decl.cc $(srcdir)/c-family/c-common.cc $(srcdir)/c-family/c-common.h $(srcdir)/c-family/c-objc.h $(srcdir)/c-family/c-cppbuiltin.cc $(srcdir)/c-family/c-pragma.h $(srcdir)/c-family/c-pragma.cc $(srcdir)/c-family/c-format.cc $(srcdir)/c/c-objc-common.cc $(srcdir)/c/c-parser.h $(srcdir)/c/c-parser.cc $(srcdir)/c/c-lang.h [cp] $(srcdir)/cp/name-lookup.h $(srcdir)/cp/cp-tree.h $(srcdir)/c-family/c-common.h $(srcdir)/c-family/c-objc.h $(srcdir)/c-family/c-pragma.h $(srcdir)/cp/decl.h $(srcdir)/cp/parser.h $(srcdir)/c-family/c-common.cc $(srcdir)/c-family/c-format.cc $(srcdir)/c-family/c-cppbuiltin.cc $(srcdir)/c-family/c-pragma.cc $(srcdir)/cp/call.cc $(srcdir)/cp/class.cc $(srcdir)/cp/constexpr.cc $(srcdir)/cp/contracts.cc $(srcdir)/cp/constraint.cc $(srcdir)/cp/coroutines.cc $(srcdir)/cp/cp-gimplify.cc $(srcdir)/cp/cp-lang.cc $(srcdir)/cp/cp-objcp-common.cc $(srcdir)/cp/decl.cc $(srcdir)/cp/decl2.cc $(srcdir)/cp/except.cc $(srcdir)/cp/friend.cc $(srcdir)/cp/init.cc $(srcdir)/cp/lambda.cc $(srcdir)/cp/lex.cc $(srcdir)/cp/logic.cc $(srcdir)/cp/mangle.cc $(srcdir)/cp/method.cc $(srcdir)/cp/module.cc $(srcdir)/cp/name-lookup.cc $(srcdir)/cp/parser.cc $(srcdir)/cp/pt.cc $(srcdir)/cp/rtti.cc $(srcdir)/cp/semantics.cc $(srcdir)/cp/tree.cc $(srcdir)/cp/typeck2.cc $(srcdir)/cp/vtable-class-hierarchy.cc  [d] $(srcdir)/d/d-tree.h $(srcdir)/d/d-builtins.cc $(srcdir)/d/d-lang.cc $(srcdir)/d/typeinfo.cc [fortran] $(srcdir)/fortran/f95-lang.cc $(srcdir)/fortran/trans-decl.cc $(srcdir)/fortran/trans-intrinsic.cc $(srcdir)/fortran/trans-io.cc $(srcdir)/fortran/trans-stmt.cc $(srcdir)/fortran/trans-types.cc $(srcdir)/fortran/trans-types.h $(srcdir)/fortran/trans.h $(srcdir)/fortran/trans-const.h [go] $(srcdir)/go/go-lang.cc $(srcdir)/go/go-c.h [jit] $(srcdir)/jit/dummy-frontend.cc [lto] $(srcdir)/lto/lto-tree.h $(srcdir)/lto/lto-lang.cc $(srcdir)/lto/lto.cc $(srcdir)/lto/lto.h $(srcdir)/lto/lto-common.h $(srcdir)/lto/lto-common.cc $(srcdir)/lto/lto-dump.cc [m2] $(srcdir)/m2/gm2-lang.cc          $(srcdir)/m2/gm2-lang.h          $(srcdir)/m2/gm2-gcc/rtegraph.cc          $(srcdir)/m2/gm2-gcc/m2block.cc          $(srcdir)/m2/gm2-gcc/m2builtins.cc          $(srcdir)/m2/gm2-gcc/m2decl.cc          $(srcdir)/m2/gm2-gcc/m2except.cc          $(srcdir)/m2/gm2-gcc/m2expr.cc          $(srcdir)/m2/gm2-gcc/m2statement.cc          $(srcdir)/m2/gm2-gcc/m2type.cc [objc] $(srcdir)/objc/objc-map.h $(srcdir)/c-family/c-objc.h $(srcdir)/objc/objc-act.h $(srcdir)/objc/objc-act.cc $(srcdir)/objc/objc-runtime-shared-support.cc $(srcdir)/objc/objc-gnu-runtime-abi-01.cc $(srcdir)/objc/objc-next-runtime-abi-01.cc $(srcdir)/objc/objc-next-runtime-abi-02.cc $(srcdir)/c/c-parser.h $(srcdir)/c/c-parser.cc $(srcdir)/c/c-tree.h $(srcdir)/c/c-decl.cc $(srcdir)/c/c-lang.h $(srcdir)/c/c-objc-common.cc $(srcdir)/c-family/c-common.cc $(srcdir)/c-family/c-common.h $(srcdir)/c-family/c-cppbuiltin.cc $(srcdir)/c-family/c-pragma.h $(srcdir)/c-family/c-pragma.cc $(srcdir)/c-family/c-format.cc [objcp] $(srcdir)/cp/name-lookup.h $(srcdir)/cp/cp-tree.h $(srcdir)/c-family/c-common.h $(srcdir)/c-family/c-objc.h $(srcdir)/c-family/c-pragma.h $(srcdir)/cp/decl.h $(srcdir)/cp/parser.h $(srcdir)/c-family/c-common.cc $(srcdir)/c-family/c-format.cc $(srcdir)/c-family/c-cppbuiltin.cc $(srcdir)/c-family/c-pragma.cc $(srcdir)/cp/call.cc $(srcdir)/cp/class.cc $(srcdir)/cp/constexpr.cc $(srcdir)/cp/contracts.cc $(srcdir)/cp/constraint.cc $(srcdir)/cp/coroutines.cc $(srcdir)/cp/cp-gimplify.cc $(srcdir)/objcp/objcp-lang.cc $(srcdir)/cp/cp-objcp-common.cc $(srcdir)/cp/decl.cc $(srcdir)/cp/decl2.cc $(srcdir)/cp/except.cc $(srcdir)/cp/friend.cc $(srcdir)/cp/init.cc $(srcdir)/cp/lambda.cc $(srcdir)/cp/lex.cc $(srcdir)/cp/logic.cc $(srcdir)/cp/mangle.cc $(srcdir)/cp/method.cc $(srcdir)/cp/module.cc $(srcdir)/cp/name-lookup.cc $(srcdir)/cp/parser.cc $(srcdir)/cp/pt.cc $(srcdir)/cp/rtti.cc $(srcdir)/cp/semantics.cc $(srcdir)/cp/tree.cc $(srcdir)/cp/typeck2.cc $(srcdir)/cp/vtable-class-hierarchy.cc $(srcdir)/objc/objc-act.h $(srcdir)/objc/objc-map.h $(srcdir)/objc/objc-act.cc $(srcdir)/objc/objc-gnu-runtime-abi-01.cc $(srcdir)/objc/objc-next-runtime-abi-01.cc $(srcdir)/objc/objc-next-runtime-abi-02.cc $(srcdir)/objc/objc-runtime-shared-support.cc  [rust] $(srcdir)/rust/rust-lang.cc
 
 # Compute the list of GT header files from the corresponding C sources,
 # possibly nested within config or language subdirectories.  Match gengtype's
@@ -3014,9 +3052,9 @@ $(genprog:%=build/gen%$(build_exeext)): build/gen%$(build_exeext): build/gen%.o 
 
 omp-general.o: omp-device-properties.h
 
-omp_device_properties = @omp_device_properties@
+omp_device_properties = 
 omp-device-properties.h: s-omp-device-properties-h ; @true
-s-omp-device-properties-h: @omp_device_property_deps@
+s-omp-device-properties-h: 
 	-rm -f tmp-omp-device-properties.h; \
 	for kind in kind arch isa; do \
 	  echo 'const char omp_offload_device_'$${kind}'[] = ' \
@@ -3072,7 +3110,7 @@ PREPROCESSOR_DEFINES = \
   -DNATIVE_SYSTEM_HEADER_DIR=\"$(NATIVE_SYSTEM_HEADER_DIR)\" \
   -DPREFIX=\"$(prefix)/\" \
   -DSTANDARD_EXEC_PREFIX=\"$(libdir)/gcc/\" \
-  @TARGET_SYSTEM_ROOT_DEFINE@
+  
 
 CFLAGS-cppbuiltin.o += $(PREPROCESSOR_DEFINES) -DBASEVER=$(BASEVER_s)
 cppbuiltin.o: $(BASEVER)
@@ -3338,7 +3376,7 @@ doc: $(BUILD_INFO) $(GENERATED_MANPAGES)
 INFOFILES = doc/cpp.info doc/gcc.info doc/gccint.info \
             doc/gccinstall.info doc/cppinternals.info
 
-info: $(INFOFILES) lang.info @GENINSRC@ srcinfo lang.srcinfo
+info: $(INFOFILES) lang.info # srcinfo lang.srcinfo
 
 srcinfo: $(INFOFILES)
 	-cp -p $^ $(srcdir)/doc
@@ -3479,11 +3517,11 @@ $(build_htmldir)/gccinstall/index.html: $(TEXI_GCCINSTALL_FILES)
 
 MANFILES = doc/gcov.1 doc/cpp.1 doc/gcc.1 doc/gfdl.7 doc/gpl.7 \
            doc/fsf-funding.7 doc/gcov-tool.1 doc/gcov-dump.1 \
-	   $(if $(filter yes,@enable_lto@),doc/lto-dump.1)
+	   $(if $(filter yes,yes),doc/lto-dump.1)
 
 generated-manpages: man
 
-man: $(MANFILES) lang.man @GENINSRC@ srcman lang.srcman
+man: $(MANFILES) lang.man # srcman lang.srcman
 
 srcman: $(MANFILES)
 	-cp -p $^ $(srcdir)/doc
@@ -3632,7 +3670,7 @@ maintainer-clean:
 # Install the driver last so that the window when things are
 # broken is small.
 install: install-common $(INSTALL_HEADERS) \
-    install-cpp install-man install-info install-@POSUB@ \
+    install-cpp install-man install-info install- \
     install-driver install-lto-wrapper install-gcc-ar
 
 ifeq ($(enable_plugin),yes)
@@ -3889,7 +3927,7 @@ install-man: lang.install-man \
 	$(DESTDIR)$(man1dir)/$(GCOV_INSTALL_NAME)$(man1ext) \
 	$(DESTDIR)$(man1dir)/$(GCOV_TOOL_INSTALL_NAME)$(man1ext) \
 	$(DESTDIR)$(man1dir)/$(GCOV_DUMP_INSTALL_NAME)$(man1ext) \
-	$(if $(filter yes,@enable_lto@),$(DESTDIR)$(man1dir)/$(LTO_DUMP_INSTALL_NAME)$(man1ext)) \
+	$(if $(filter yes,yes),$(DESTDIR)$(man1dir)/$(LTO_DUMP_INSTALL_NAME)$(man1ext)) \
 	$(DESTDIR)$(man7dir)/fsf-funding$(man7ext) \
 	$(DESTDIR)$(man7dir)/gfdl$(man7ext) \
 	$(DESTDIR)$(man7dir)/gpl$(man7ext)
@@ -4072,7 +4110,7 @@ uninstall: lang.uninstall
 # These targets are for the dejagnu testsuites. The file site.exp
 # contains global variables that all the testsuites will use.
 
-target_subdir = @target_subdir@
+target_subdir = arc-elf32
 
 site.exp:
 	@echo "Making a new config file..."
@@ -4106,7 +4144,7 @@ site.exp:
 	@echo "set TEST_GCC_EXEC_PREFIX \"$(libdir)/gcc/\"" >> ./site.tmp
 	@echo "set TESTING_IN_BUILD_TREE 1" >> ./site.tmp
 	@echo "set HAVE_LIBSTDCXX_V3 1" >> ./site.tmp
-	@if test "@enable_plugin@" = "yes" ; then \
+	@if test "yes" = "yes" ; then \
 	  echo "set ENABLE_PLUGIN 1" >> ./site.tmp; \
 	  echo "set PLUGINCC \"$(PLUGINCC)\"" >> ./site.tmp; \
 	  echo "set PLUGINCFLAGS \"$(PLUGINCFLAGS)\"" >> ./site.tmp; \
@@ -4154,7 +4192,7 @@ site.exp:
 		-e '1,/^## All variables above are.*##/ d' >> site.exp
 	-@rm -f ./site.tmp
 
-CHECK_TARGETS = @check_languages@
+CHECK_TARGETS =  check-c # check-c++ check-lto
 
 check: $(CHECK_TARGETS)
 
@@ -4355,9 +4393,9 @@ paranoia: paranoia.o real.o $(LIBIBERTY)
 
 # These exist for maintenance purposes.
 
-CTAGS=@CTAGS@
-ETAGS=@ETAGS@
-CSCOPE=@CSCOPE@
+CTAGS=ctags
+ETAGS=etags
+CSCOPE=cscope
 
 # Update the tags table.
 TAGS: lang.tags
@@ -4382,15 +4420,15 @@ TAGS: lang.tags
 # Disabled by autoconf if the tools are not available.
 # -----------------------------------------------------
 
-XGETTEXT = @XGETTEXT@
-GMSGFMT = @GMSGFMT@
+XGETTEXT = /home/luiss/.install/gettext/0_20_1/bin/xgettext
+GMSGFMT = /home/luiss/.install/gettext/0_20_1/bin/msgfmt
 MSGMERGE = msgmerge
-CATALOGS = $(patsubst %,po/%,@CATALOGS@)
+CATALOGS = $(patsubst %,po/%,)
 
 .PHONY: build- install- build-po install-po update-po
 
 # Dummy rules to deal with dependencies produced by use of
-# "build-@POSUB@" and "install-@POSUB@" above, when NLS is disabled.
+# "build-" and "install-" above, when NLS is disabled.
 build-: ; @true
 install-: ; @true
 
