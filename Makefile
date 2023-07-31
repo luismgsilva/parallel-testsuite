@@ -58,31 +58,31 @@ build=x86_64-pc-linux-gnu
 host=x86_64-pc-linux-gnu
 host_noncanonical=x86_64-pc-linux-gnu
 host_os=linux-gnu
-target=arc64-unknown-elf
-target_noncanonical:=arc64-elf
+target=arc-unknown-elf32
+target_noncanonical:=arc-elf32
 
 # Normally identical to target_noncanonical, except for compilers built
 # as accelerator targets.
-real_target_noncanonical:=arc64-elf
+real_target_noncanonical:=arc-elf32
 accel_dir_suffix = 
 
 # Sed command to transform gcc to installed name.
-program_transform_name := s&^&arc64-elf-&
+program_transform_name := s&^&arc-elf32-&
 
 # -----------------------------
 # Directories used during build
 # -----------------------------
 
 # Directory where sources are, from where we are.
-srcdir = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc
-gcc_docdir = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/doc
+srcdir = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc
+gcc_docdir = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/doc
 
 # Directory where sources are, absolute.
-abs_srcdir = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc
-abs_docdir = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/doc
+abs_srcdir = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc
+abs_docdir = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/doc
 
 # Directory where sources are, relative to here.
-top_srcdir = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc
+top_srcdir = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc
 
 # Top build directory for this package, relative to here.
 top_builddir = .
@@ -92,7 +92,7 @@ objdir := $(shell pwd)
 
 host_subdir=.
 build_subdir=build-x86_64-pc-linux-gnu
-target_subdir=arc64-elf
+target_subdir=arc-elf32
 build_libsubdir=build-x86_64-pc-linux-gnu
 
 # Top build directory for the "Cygnus tree", relative to $(top_builddir).
@@ -111,7 +111,7 @@ target_objdir := $(toplevel_builddir)/$(target_subdir)
 # --------
 
 # Directory where sources are, from where we are.
-VPATH = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc
+VPATH = /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc
 
 # We define a vpath for the sources of the .texi files here because they
 # are split between multiple directories and we would rather use one implicit
@@ -489,7 +489,7 @@ AR_FLAGS_FOR_TARGET =
 AR_CREATE_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) rc
 AR_EXTRACT_FOR_TARGET = $(AR_FOR_TARGET) $(AR_FLAGS_FOR_TARGET) x
 LIPO_FOR_TARGET = lipo
-ORIGINAL_AS_FOR_TARGET = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/install/arc64-elf/bin/as
+ORIGINAL_AS_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/as
 RANLIB_FOR_TARGET := $(shell \
   if [ -f $(objdir)/../binutils/ranlib ] ; then \
     echo $(objdir)/../binutils/ranlib ; \
@@ -500,8 +500,8 @@ RANLIB_FOR_TARGET := $(shell \
        t='$(program_transform_name)'; echo ranlib | sed -e "$$t" ; \
     fi; \
   fi)
-ORIGINAL_LD_FOR_TARGET = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/install/arc64-elf/bin/ld
-ORIGINAL_NM_FOR_TARGET = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/install/arc64-elf/bin/nm
+ORIGINAL_LD_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/ld
+ORIGINAL_NM_FOR_TARGET = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727/arc-elf32/bin/nm
 NM_FOR_TARGET = ./nm
 STRIP_FOR_TARGET := $(shell \
   if [ -f $(objdir)/../binutils/strip-new ] ; then \
@@ -561,21 +561,21 @@ TARGET_SYSTEM_ROOT =
 TARGET_SYSTEM_ROOT_DEFINE = 
 
 xmake_file= $(srcdir)/config/x-linux
-tmake_file= $(srcdir)/config/arc64/t-multilib $(srcdir)/config/arc64/t-arc64
+tmake_file= $(srcdir)/config/arc/t-multilib $(srcdir)/config/arc/t-arc
 TM_ENDIAN_CONFIG=
 TM_MULTILIB_CONFIG=
 TM_MULTILIB_EXCEPTIONS_CONFIG=
-out_file=$(srcdir)/config/arc64/arc64.cc
-out_object_file=arc64.o
-common_out_file=$(srcdir)/common/config/arc64/arc64-common.cc
-common_out_object_file=arc64-common.o
+out_file=$(srcdir)/config/arc/arc.cc
+out_object_file=arc.o
+common_out_file=$(srcdir)/common/config/arc/arc-common.cc
+common_out_object_file=arc-common.o
 EXTRA_GTYPE_DEPS=
-md_file=$(srcdir)/common.md $(srcdir)/config/arc64/arc64.md
-tm_file_list=options.h $(srcdir)/config/elfos.h $(srcdir)/config/newlib-stdint.h $(srcdir)/config/arc64/elf.h $(srcdir)/config/arc64/elf64.h $(srcdir)/config/arc64/arc64.h $(srcdir)/config/initfini-array.h $(srcdir)/defaults.h
-tm_include_list=options.h insn-constants.h config/elfos.h config/newlib-stdint.h config/arc64/elf.h config/arc64/elf64.h config/arc64/arc64.h config/initfini-array.h defaults.h
-tm_defines= LIBC_GLIBC=1 LIBC_UCLIBC=2 LIBC_BIONIC=3 LIBC_MUSL=4
-tm_p_file_list= $(srcdir)/config/arc64/arc64-protos.h tm-preds.h
-tm_p_include_list= config/arc64/arc64-protos.h tm-preds.h
+md_file=$(srcdir)/common.md $(srcdir)/config/arc/arc.md
+tm_file_list=options.h $(srcdir)/config/arc/arc-arch.h $(srcdir)/config/elfos.h $(srcdir)/config/newlib-stdint.h $(srcdir)/config/arc/elf.h $(srcdir)/config/arc/arc.h $(srcdir)/config/initfini-array.h $(srcdir)/defaults.h
+tm_include_list=options.h insn-constants.h config/arc/arc-arch.h config/elfos.h config/newlib-stdint.h config/arc/elf.h config/arc/arc.h config/initfini-array.h defaults.h
+tm_defines= LIBC_GLIBC=1 LIBC_UCLIBC=2 LIBC_BIONIC=3 LIBC_MUSL=4 TARGET_CPU_BUILD=PROCESSOR_archs
+tm_p_file_list= $(srcdir)/config/arc/arc-protos.h tm-preds.h
+tm_p_include_list= config/arc/arc-protos.h tm-preds.h
 tm_d_file_list=
 tm_d_include_list=
 build_xm_file_list= auto-host.h $(srcdir)/../include/ansidecl.h
@@ -589,18 +589,18 @@ xm_include_list= auto-host.h ansidecl.h
 xm_defines=
 lang_checks=
 lang_checks_parallelized=
-lang_opt_files= /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/ada/gcc-interface/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/d/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/fortran/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/go/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/lto/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/m2/lang.opt /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/rust/lang.opt $(srcdir)/c-family/c.opt $(srcdir)/common.opt $(srcdir)/params.opt $(srcdir)/analyzer/analyzer.opt
-lang_specs_files= /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/cp/lang-specs.h /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/lto/lang-specs.h
-lang_tree_files= /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/ada/gcc-interface/ada-tree.def /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/cp/cp-tree.def /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/d/d-tree.def /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/m2/m2-tree.def /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/../../sources/arc-gnu-toolchain/gcc/gcc/objc/objc-tree.def
+lang_opt_files= /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/ada/gcc-interface/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/d/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/fortran/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/go/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/lto/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/m2/lang.opt /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/rust/lang.opt $(srcdir)/c-family/c.opt $(srcdir)/common.opt $(srcdir)/params.opt $(srcdir)/analyzer/analyzer.opt
+lang_specs_files= /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/cp/lang-specs.h /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/lto/lang-specs.h
+lang_tree_files= /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/ada/gcc-interface/ada-tree.def /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/cp/cp-tree.def /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/d/d-tree.def /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/m2/m2-tree.def /scratch/luiss/tmp3/delete2/parallel-subset/gcc/gcc/objc/objc-tree.def
 target_cpu_default=
 OBJC_BOEHM_GC=
-extra_modes_file=$(srcdir)/config/arc64/arc64-modes.def
-extra_opt_files= $(srcdir)/config/arc64/arc64.opt
+extra_modes_file=$(srcdir)/config/arc/arc-modes.def
+extra_opt_files= $(srcdir)/config/arc/arc-tables.opt $(srcdir)/config/g.opt $(srcdir)/config/arc/arc.opt
 host_hook_obj=host-linux.o
 
 # Multiarch support
 enable_multiarch = no
-with_cpu = hs6x
+with_cpu = archs
 with_float = 
 ifeq ($(enable_multiarch),yes)
   if_multiarch = $(1)
@@ -619,7 +619,7 @@ endif
 
 # Common prefix for installation directories.
 # NOTE: This directory must exist when you start installation.
-prefix = /scratch/luiss/issues/toolchain/421/default/workspace/hs6x-gcc-baremetal/install
+prefix = /scratch/luiss/bsf/builder/install/archs-gcc-baremetal/20230727
 # Directory in which to put localized header files. On the systems with
 # gcc as the native cc, `local_prefix' may not be `prefix' which is
 # `/usr'.
@@ -691,10 +691,10 @@ gcc_tooldir = $(libsubdir)/$(libsubdir_to_prefix)$(target_noncanonical)
 # Since gcc_tooldir does not exist at build-time, use -B$(build_tooldir)/bin/
 build_tooldir = $(exec_prefix)/$(target_noncanonical)
 # Directory in which the compiler finds target-independent g++ includes.
-gcc_gxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc64-elf/include/c++/$(version)
+gcc_gxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc-elf32/include/c++/$(version)
 gcc_gxx_include_dir_add_sysroot = 0
 # Directory in which the compiler finds libc++ includes.
-gcc_gxx_libcxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc64-elf/libc++_include/c++/$(version)/v1
+gcc_gxx_libcxx_include_dir = $(libsubdir)/$(libsubdir_to_prefix)arc-elf32/libc++_include/c++/$(version)/v1
 gcc_gxx_libcxx_include_dir_add_sysroot = 0
 # Directory to search for site-specific includes.
 local_includedir = $(local_prefix)/include
@@ -762,13 +762,13 @@ EXTRA_OBJS =
 
 # List of extra object files that should be compiled and linked with
 # the gcc driver.
-EXTRA_GCC_OBJS = 
+EXTRA_GCC_OBJS = driver-arc.o
 
 # List of extra libraries that should be linked with the gcc driver.
 EXTRA_GCC_LIBS = 
 
 # List of additional header files to install.
-EXTRA_HEADERS = $(srcdir)/ginclude/tgmath.h
+EXTRA_HEADERS = $(srcdir)/config/arc/arc-simd.h $(srcdir)/ginclude/tgmath.h
 
 # How to handle <stdint.h>.
 USE_GCC_STDINT = wrap
@@ -863,7 +863,7 @@ OPTIONS_H_EXTRA =
 # the .opt files
 OPTIONS_C_EXTRA = $(PRETTY_PRINT_H)
 
-OPTIONS_H_EXTRA += $(srcdir)/config/arc64/arc64-opts.h
+OPTIONS_H_EXTRA += $(srcdir)/config/arc/arc-opts.h
 
 # End of variables for you to override.
 
@@ -1231,10 +1231,10 @@ FLAGS_TO_PASS = \
 ALL_OPT_FILES=$(lang_opt_files) $(extra_opt_files)
 
 # Target specific, C specific object file
-C_TARGET_OBJS=arc64-c.o default-c.o
+C_TARGET_OBJS=arc-c.o default-c.o
 
 # Target specific, C++ specific object file
-CXX_TARGET_OBJS=arc64-c.o default-c.o
+CXX_TARGET_OBJS=arc-c.o default-c.o
 
 # Target specific, D specific object file
 D_TARGET_OBJS= default-d.o
@@ -1980,11 +1980,11 @@ $(foreach file,$(ALL_HOST_FRONTEND_OBJS),$(eval CFLAGS-$(file) += -DIN_GCC_FRONT
 # This is what is done in this makefile. Note that mkconfig.sh has a
 # move-if-change built-in
 
-Makefile: config.status $(srcdir)/Makefile.in $(LANG_MAKEFRAGS)
-	LANGUAGES="$(CONFIG_LANGUAGES)" \
-	CONFIG_HEADERS= \
-	CONFIG_SHELL="$(SHELL)" \
-	CONFIG_FILES=$@ $(SHELL) config.status
+# Makefile: config.status $(srcdir)/Makefile.in $(LANG_MAKEFRAGS)
+# 	LANGUAGES="$(CONFIG_LANGUAGES)" \
+# 	CONFIG_HEADERS= \
+# 	CONFIG_SHELL="$(SHELL)" \
+# 	CONFIG_FILES=$@ $(SHELL) config.status
 
 config.h: cs-config.h ; @true
 bconfig.h: cs-bconfig.h ; @true
@@ -4108,9 +4108,9 @@ uninstall: lang.uninstall
 # These targets are for the dejagnu testsuites. The file site.exp
 # contains global variables that all the testsuites will use.
 
-target_subdir = arc64-elf
+target_subdir = arc-elf32
 
-site.exp: ./config.status Makefile
+site.exp:
 	@echo "Making a new config file..."
 	-@rm -f ./site.tmp
 	@$(STAMP) site.exp
@@ -4190,7 +4190,7 @@ site.exp: ./config.status Makefile
 		-e '1,/^## All variables above are.*##/ d' >> site.exp
 	-@rm -f ./site.tmp
 
-CHECK_TARGETS =  check-c check-c++ check-lto
+CHECK_TARGETS =  check-c # check-c++ check-lto
 
 check: $(CHECK_TARGETS)
 
