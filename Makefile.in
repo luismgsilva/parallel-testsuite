@@ -4192,7 +4192,7 @@ site.exp:
 		-e '1,/^## All variables above are.*##/ d' >> site.exp
 	-@rm -f ./site.tmp
 
-CHECK_TARGETS =  check-c # check-c++ check-lto
+CHECK_TARGETS =  check-c check-c++ check-lto
 
 check: $(CHECK_TARGETS)
 
