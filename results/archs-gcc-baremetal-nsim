@@ -1,0 +1,968 @@
+ruby compare.rb -f gcc.sum -h /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc/:NATIVE -h /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc/:PARALLEL -v
++--+-------------------------------------+----------------------------------------------------------+----------------------------------------------------------+
+|  |                Delta                |                          NATIVE                          |                         PARALLEL                         |
++--+---------+---------+--------+--------+--------+------+-------+-------+------------+-------------+--------+------+-------+-------+------------+-------------+
+|  | D(PASS) | D(FAIL) | D(NEW) | D(REM) | PASS   | FAIL | XFAIL | XPASS | UNRESOLVED | UNSUPPORTED | PASS   | FAIL | XFAIL | XPASS | UNRESOLVED | UNSUPPORTED |
++--+---------+---------+--------+--------+--------+------+-------+-------+------------+-------------+--------+------+-------+-------+------------+-------------+
+|  | 18      | 0       | 49     | 886    | 126783 | 37   | 840   | 4     | 18         | 3520        | 125960 | 37   | 827   | 3     | 18         | 3489        |
++--+---------+---------+--------+--------+--------+------+-------+-------+------------+-------------+--------+------+-------+-------+------------+-------------+
+===  ===
+  New pass
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+
+  Add test
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-1.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-10.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-10b.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-11.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-12.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-13.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-14.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-15.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-16.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-17.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-18.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-1a.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-2.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-3.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-4.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-4b.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-5b.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-6.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-7.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-8.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-9.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr83813.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr84758.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr85217.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr85332.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr85338.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr85350.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr85372.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr86536.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr90574-1.c
+    (UNSUPPORTED) => () : gcc.misc-tests/gcov-pr90574-2.c
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    ((null)) => (PASS) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/bsf/testing-gcc-parallel/workspace/archs-gcc-baremetal-nsim/testsuite/gcc22/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+
+  Rem test
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O0   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O1   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fno-use-linker-plugin -flto-partition=none   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O2 -flto -fuse-linker-plugin -fno-fat-lto-objects   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -fomit-frame-pointer -funroll-loops -fpeel-loops -ftracer -finline-functions   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -O3 -g   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -Og -g   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump1/dump-noaddr.c -DMASK=1 -x c --param ggc-min-heapsize=1 -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.c-torture/unsorted/dump-noaddr.c,  -Os   -dumpbase /scratch/luiss/testing/workspace/archs-gcc-baremetal-nsim/build-gcc-newlib-stage2/gcc/testsuite/gcc7/dump2/dump-noaddr.c -DMASK=2 -x c -fdump-ipa-all -fdump-rtl-all -fdump-tree-all -fdump-noaddr -gno-record-gcc-switches
+    (PASS) => ((null)) : gcc.dg/plugin/analyzer_gil_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/analyzer_kernel_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/analyzer_known_fns_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/copy_from_user-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 25)
+    (PASS) => ((null)) : gcc.dg/plugin/copy_from_user-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 27)
+    (PASS) => ((null)) : gcc.dg/plugin/copy_from_user-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/copy_from_user-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 31)
+    (PASS) => ((null)) : gcc.dg/plugin/copy_from_user-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  dg-regexp 9 was found: "during GIMPLE pass: crash_test"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 16
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_ice"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\[\\]
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 8
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "I'm sorry Dave, I'm afraid I can't do that"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+    (XFAIL) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so (Internal compiler error:)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-stderr.c -fplugin=./crash_test_plugin.so  dg-regexp 8 was found: "during GIMPLE pass: crash_test"
+    (XFAIL) => ((null)) : gcc.dg/plugin/crash-test-ice-stderr.c -fplugin=./crash_test_plugin.so (internal compiler error: I'm sorry Dave, I'm afraid I can't do that)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-ice-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  (test .sarif output for UTF-8-encoded parseable JSON)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  dg-regexp 9 was found: "during GIMPLE pass: crash_test"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifactLocation": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "artifacts": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contents": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "contextRegion": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "driver": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "endColumn": 31
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "executionSuccessful": false
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "extensions": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "fullName": "GNU C
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "informationUri": "
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "invocations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "kind": "function"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "level": "error"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "location": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "locations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "logicalLocations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "message": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "GNU C
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "crash_test_plugin"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "name": "test_inject_write_through_null"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "physicalLocation": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "region": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "results": \\[\\]
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "runs": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "sourceLanguage": "c"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startColumn": 3
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "startLine": 8
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "text": "Segmentation fault"
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "tool": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "toolExecutionNotifications": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "uri": 
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so  scan-sarif-file "version": "2.1.0"
+    (XFAIL) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so (Internal compiler error:)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-sarif.c -fplugin=./crash_test_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-stderr.c -fplugin=./crash_test_plugin.so  dg-regexp 8 was found: "during GIMPLE pass: crash_test"
+    (XFAIL) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-stderr.c -fplugin=./crash_test_plugin.so (internal compiler error: Segmentation fault)
+    (PASS) => ((null)) : gcc.dg/plugin/crash-test-write-though-null-stderr.c -fplugin=./crash_test_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/crash_test_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-group-test-1.c -fplugin=./diagnostic_group_plugin.so  expected multiline pattern lines 12-19
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-group-test-1.c -fplugin=./diagnostic_group_plugin.so  expected multiline pattern lines 23-25
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-group-test-1.c -fplugin=./diagnostic_group_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-1.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-1.c -fplugin=./diagnostic_plugin_test_paths.so  expected multiline pattern lines 15-111
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-1.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-2.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-2.c -fplugin=./diagnostic_plugin_test_paths.so  expected multiline pattern lines 20-121
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-2.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-3.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-3.c -fplugin=./diagnostic_plugin_test_paths.so  expected multiline pattern lines 20-121
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-inline-events-3.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-none.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-none.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-plain.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 12)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-plain.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 35)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-plain.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-plain.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-separate-events.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-separate-events.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-separate-events.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 37)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-path-format-separate-events.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for errors, line 453)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for errors, line 458)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 106)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 112)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 121)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 130)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 139)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 148)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 157)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 168)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 180)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 186)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 192)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 201)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 207)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 216)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 222)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 231)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 237)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 24)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 243)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 249)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 258)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 264)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 273)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 279)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 285)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 294)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 30)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 300)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 311)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 322)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 328)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 334)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 340)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 346)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 352)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 358)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 364)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 370)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 376)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 382)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 393)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 413)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 420)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 431)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 443)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 467)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 47)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 473)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 479)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 488)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 494)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 508)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 514)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 523)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 529)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 541)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 548)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 557)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 56)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 566)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 576)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 582)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 591)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 597)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 603)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 609)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 622)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 630)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 646)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 668)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 683)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 74)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 80)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 89)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  (test for warnings, line 95)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  at line 701 (test for warnings, line 698)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  at line 720 (test for warnings, line 718)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  at line 739 (test for warnings, line 737)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  at line 762 (test for warnings, line 760)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  at line 777 (test for warnings, line 775)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 108-109
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 114-115
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 123-124
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 132-133
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 141-142
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 150-151
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 159-160
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 170-171
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 182-183
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 188-189
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 194-195
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 203-204
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 209-210
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 218-219
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 224-225
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 233-234
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 239-240
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 245-246
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 251-252
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 26-27
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 260-261
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 266-267
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 275-276
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 281-282
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 287-288
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 296-297
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 302-303
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 313-314
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 32-33
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 324-325
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 330-331
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 336-337
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 342-343
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 348-349
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 354-355
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 360-361
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 366-367
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 372-373
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 378-379
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 38-39
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 384-385
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 395-396
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 415-416
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 422-423
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 433-434
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 445-446
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 455-456
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 460-461
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 469-470
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 475-476
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 481-482
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 49-50
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 490-491
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 496-497
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 510-511
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 516-517
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 525-526
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 531-532
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 543-544
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 550-551
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 559-560
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 568-569
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 578-579
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 58-59
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 584-585
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 593-594
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 599-600
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 605-606
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 611-612
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 624-625
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 632-635
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 648-649
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 652-653
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 672-675
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 686-689
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 703-708
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 722-723
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 726-727
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 741-742
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 745-746
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 749-750
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 76-77
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 764-765
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 779-780
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 783-784
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 82-83
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 91-92
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so  expected multiline pattern lines 97-98
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-expressions-1.c -fplugin=./diagnostic_plugin_test_tree_expression_range.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 30 (test for warnings, line 9)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 27 was found: "In function 'foo',"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 28 was found: "    inlined from 'bar' at .+/diagnostic-test-inlining-1.c:15:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 29 was found: "    inlined from 'main' at .+/diagnostic-test-inlining-1.c:20:3:"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 32-33
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-1.c -fplugin=./diagnostic_plugin_test_inlining.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 34 (test for warnings, line 6)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 39 (test for warnings, line 8)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 44 (test for warnings, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 31 was found: "In function 'foo',"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 32 was found: "    inlined from 'bar' at .+/diagnostic-test-inlining-2.c:19:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 33 was found: "    inlined from 'main' at .+/diagnostic-test-inlining-2.c:24:3:"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 36-37
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 41-42
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 46-47
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-2.c -fplugin=./diagnostic_plugin_test_inlining.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 40 (test for warnings, line 9)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 37 was found: "In function 'foo',"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 38 was found: "    inlined from 'bar' at .+/diagnostic-test-inlining-3.c:15:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 39 was found: "    inlined from 'main' at .+/diagnostic-test-inlining-3.c:20:3:"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 42-43
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-3.c -fplugin=./diagnostic_plugin_test_inlining.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  at line 52 (test for warnings, line 9)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 46 was found: "In function 'depth_0',"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 47 was found: "    inlined from 'depth_1' at .+/diagnostic-test-inlining-4.c:15:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 48 was found: "    inlined from 'depth_2' at .+/diagnostic-test-inlining-4.c:21:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 49 was found: "    inlined from 'depth_3' at .+/diagnostic-test-inlining-4.c:27:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 50 was found: "    inlined from 'depth_4' at .+/diagnostic-test-inlining-4.c:33:3,"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  dg-regexp 51 was found: "    inlined from 'main' at .+/diagnostic-test-inlining-4.c:38:3:"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so  expected multiline pattern lines 54-55
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-inlining-4.c -fplugin=./diagnostic_plugin_test_inlining.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-metadata.c -fplugin=./diagnostic_plugin_test_metadata.so  (test for warnings, line 8)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-metadata.c -fplugin=./diagnostic_plugin_test_metadata.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-1.c -fplugin=./diagnostic_plugin_test_paths.so  at line 34 (test for errors, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-1.c -fplugin=./diagnostic_plugin_test_paths.so  at line 35 (test for warnings, line 25)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-1.c -fplugin=./diagnostic_plugin_test_paths.so  at line 36 (test for warnings, line 27)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-1.c -fplugin=./diagnostic_plugin_test_paths.so  at line 37 (test for warnings, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-1.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-2.c -fplugin=./diagnostic_plugin_test_paths.so  at line 34 (test for errors, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-2.c -fplugin=./diagnostic_plugin_test_paths.so  expected multiline pattern lines 36-54
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-2.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-3.c -fplugin=./diagnostic_plugin_test_paths.so  dg-regexp 36 was found: ""kind": "error""
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-3.c -fplugin=./diagnostic_plugin_test_paths.so  dg-regexp 37 was found: ""path": "
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-3.c -fplugin=./diagnostic_plugin_test_paths.so  dg-regexp 38 was found: ".*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-3.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-4.c -fplugin=./diagnostic_plugin_test_paths.so  (test for warnings, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-4.c -fplugin=./diagnostic_plugin_test_paths.so  expected multiline pattern lines 33-83
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-4.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  (test .sarif output for UTF-8-encoded parseable JSON)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "codeFlows": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "extensions": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "fullName": "
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "level": "error"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "locations": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "name": "diagnostic_plugin_test_paths"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "results": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "text": "passing NULL as argument 1 to 'PyList_Append' which requires a non-NULL parameter"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "text": "when 'PyList_New' fails, returning NULL"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "text": "when 'i < count'"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "text": "when calling 'PyList_Append', passing NULL from \\(1\\) as argument 1"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "threadFlows": \\[
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so  scan-sarif-file "tool": 
+    (XFAIL) => ((null)) : gcc.dg/plugin/diagnostic-test-paths-5.c -fplugin=./diagnostic_plugin_test_paths.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 38)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 52)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  at line 65 (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 18 was found: "fix-it:.*\{17:20-17:20\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 19 was found: "fix-it:.*\{17:24-17:24\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 29 was found: "fix-it:.*\{28:9-28:10\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 39 was found: "fix-it:.*\{38:3-38:21\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 55 was found: "fix-it:.*\{52:1-52:1\}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 68 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 69 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v1.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 38)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 52)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  at line 65 (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 18 was found: "fix-it:.*\{17:20-17:20\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 19 was found: "fix-it:.*\{17:24-17:24\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 29 was found: "fix-it:.*\{28:9-28:10\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 39 was found: "fix-it:.*\{38:3-38:21\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 55 was found: "fix-it:.*\{52:1-52:1\}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 68 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 69 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-GCC_EXTRA_DIAGNOSTIC_OUTPUT-fixits-v2.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers-2.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers-2.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 18-19
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers-2.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 110)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 27)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 43)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 63)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 77)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 91)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 114-117
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 17-18
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 30-35
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 45-52
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 65-67
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 79-81
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 93-95
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 103)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 114)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 125)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 142)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 159)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 171)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 187)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 201)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 215)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 228)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 240)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 331)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 348)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 40)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 61)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  at line 349 (test for warnings, line 348)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 105-106
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 116-117
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 127-134
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 144-151
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 161-162
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 17-18
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 173-176
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 189-191
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 203-205
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 217-219
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 230-231
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 251-318
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 29-30
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 335-338
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 351-353
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 356-358
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 43-48
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 69-95
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-bw.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 18-23
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color-line-numbers.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 103)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 114)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 125)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 142)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 154)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 170)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 184)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 198)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 216)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 40)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 61)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 105-106
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 116-117
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 127-134
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 144-145
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 156-159
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 17-18
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 172-174
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 186-188
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 200-202
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 220-223
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 29-30
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 43-48
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 69-95
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-color.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 35)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 48)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 59)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  at line 60 (test for warnings, line 59)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 86 was found: "\-\-\- .*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 87 was found: "\+\+\+ .*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 91-142
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-generate-patch.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-no-labels.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-no-labels.c -fplugin=./diagnostic_plugin_test_show_locus.so  expected multiline pattern lines 21-24
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-no-labels.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 38)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 52)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  at line 65 (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 18 was found: "fix-it:.*\{17:20-17:20\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 19 was found: "fix-it:.*\{17:24-17:24\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 29 was found: "fix-it:.*\{28:9-28:10\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 39 was found: "fix-it:.*\{38:3-38:21\}:.*"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 55 was found: "fix-it:.*\{52:1-52:1\}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 68 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so  dg-regexp 69 was found: "fix-it:.*\{64:3-64:11}:.*\n"
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-locus-parseable-fixits.c -fplugin=./diagnostic_plugin_test_show_locus.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 25-28
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 32-33
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 37-38
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 42-43
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 47-48
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 52-53
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 57-58
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so  expected multiline pattern lines 62-63
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-show-trees-1.c -fplugin=./diagnostic_plugin_show_trees.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 164)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 176)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 188)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 249)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 108)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 125)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 140)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 152)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 200)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 22)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 232)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 272)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 347)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 44)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 81)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for warnings, line 95)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 216 (test for errors, line 211)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 289 (test for errors, line 286)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 316 (test for warnings, line 5)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 335 (test for errors, line 329)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 111-112
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 128-129
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 143-144
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 155-156
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 167-168
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 179-180
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 191-192
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 203-204
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 218-225
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 237-242
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 25-26
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 252-253
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 260-261
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 275-276
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 291-296
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 318-319
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 338-339
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 349-350
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 36-37
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 48-51
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 84-85
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so  expected multiline pattern lines 98-99
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-1.c -fplugin=./diagnostic_plugin_test_string_literals.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-2.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-2.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 46)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-2.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 33 (test for errors, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-2.c -fplugin=./diagnostic_plugin_test_string_literals.so  at line 72 (test for errors, line 61)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-2.c -fplugin=./diagnostic_plugin_test_string_literals.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-3.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-3.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 20)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-3.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 31)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-3.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 41)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-3.c -fplugin=./diagnostic_plugin_test_string_literals.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-4.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 13)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-4.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 20)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-4.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 30)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-4.c -fplugin=./diagnostic_plugin_test_string_literals.so  (test for errors, line 40)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic-test-string-literals-4.c -fplugin=./diagnostic_plugin_test_string_literals.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_group_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_show_trees.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_inlining.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_metadata.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_paths.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_show_locus.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_string_literals.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/diagnostic_plugin_test_tree_expression_range.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 16)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so  (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-1.c -fplugin=./dump_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 16)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 24 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 25 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 26 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 27 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 28 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so  at line 29 (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/dump-2.c -fplugin=./dump_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/dump_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/expensive-selftests-1.c -fplugin=./expensive_selftests_plugin.so  dg-regexp 3 was found: "expensive_selftests_plugin: .* pass\(es\) in .* seconds|not enabled in this build"
+    (PASS) => ((null)) : gcc.dg/plugin/expensive-selftests-1.c -fplugin=./expensive_selftests_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/expensive_selftests_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/finish_unit-test-1.c -fplugin=./finish_unit_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/finish_unit_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/ggcplug-test-1.c -fplugin=./ggcplug.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/ggcplug.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 17)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 25)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 27)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 48)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 54)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 64)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 70)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 79)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 80)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 88)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so  (test for warnings, line 89)
+    (PASS) => ((null)) : gcc.dg/plugin/gil-1.c -fplugin=./analyzer_gil_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 135)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 142)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 148)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 154)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 22)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 42)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 162)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 48)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 100 (test for warnings, line 99)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 110 (test for warnings, line 109)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 168 (test for warnings, line 167)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 181 (test for warnings, line 180)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 54 (test for warnings, line 53)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 103 (test for warnings, line 102)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 104 (test for warnings, line 102)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 113 (test for warnings, line 112)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 114 (test for warnings, line 112)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 175 (test for warnings, line 174)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 184 (test for warnings, line 183)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 29 (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 57 (test for warnings, line 56)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 102)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 112)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 174)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 183)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 56)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 109)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 167)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 180)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 53)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 99)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 22)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so capacity at line 29 (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so field (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so fix-it at line 30 (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so note how much at line 33 (test for warnings, line 32)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so padding at line 20 (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 32)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-2.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 28)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 102)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 129)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 38)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 58)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 78)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 115)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 144)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 47)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 67)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 87)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-3.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 135)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 55)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 88 (test for warnings, line 87)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so how much note at line 106 (test for warnings, line 105)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 105)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 87)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 46)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so capacity at line 27 (test for warnings, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so how much note at line 34 (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2011-1078-2.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 101)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 39)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 69)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so capacity message at line 55 (test for warnings, line 54)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so memspace message (test for warnings, line 54)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18549-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 70 (test for warnings, line 69)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 147)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 171)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 32)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 35)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 41)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 65)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 74)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so capacity message at line 112 (test for warnings, line 111)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so how much at line 125 (test for warnings, line 124)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so memspace message (test for warnings, line 111)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-CVE-2017-18550-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 124)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 122)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 52)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 61)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 80)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 94)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 102 (test for warnings, line 101)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 116 (test for warnings, line 115)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 34 (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 67 (test for warnings, line 66)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 108 (test for warnings, line 107)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 124 (test for warnings, line 123)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 149 (test for warnings, line 148)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 38 (test for warnings, line 37)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 72 (test for warnings, line 71)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 107)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 123)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 148)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 37)
+    (XFAIL) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 50)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 71)
+    (XFAIL) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 82)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 101)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 115)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 66)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 16)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so capacity at line 22 (test for warnings, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so fix-it hint at line 23 (test for warnings, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so note how much at line 26 (test for warnings, line 25)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so warning (test for warnings, line 25)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-fixit-1.c -fplugin=./analyzer_kernel_plugin.so where (test for warnings, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-net-ethtool-ioctl.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XPASS) => ((null)) : gcc.dg/plugin/infoleak-vfio_iommu_type1.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 42)
+    (PASS) => ((null)) : gcc.dg/plugin/infoleak-vfio_iommu_type1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 14)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 32)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 50)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 51)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 52)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 57)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 58)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so  (test for warnings, line 59)
+    (PASS) => ((null)) : gcc.dg/plugin/known-fns-1.c -fplugin=./analyzer_known_fns_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-1.c -fplugin=./location_overflow_plugin.so  (test for bogus messages, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-1.c -fplugin=./location_overflow_plugin.so  (test for errors, line 8)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-1.c -fplugin=./location_overflow_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-1.c -fplugin=./location_overflow_plugin.so adding '-flarge-source-files' (test for warnings, line 16)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so  (test for errors, line 8)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so  (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so  expected multiline pattern lines 12-13
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so  expected multiline pattern lines 30-31
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so  expected multiline pattern lines 34-35
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-2.c -fplugin=./location_overflow_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-pr83173.c -fplugin=./location_overflow_plugin.so  scan-file # 1 [^\r\n]+location-overflow-test-pr83173-1.h" 1
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-pr83173.c -fplugin=./location_overflow_plugin.so  scan-file-not # (?!1 [^\r\n]+location-overflow-test-pr83173-1.h" 1)[0-9]+ [^\r\n]+location-overflow-test-pr83173-1.h"
+    (PASS) => ((null)) : gcc.dg/plugin/location-overflow-test-pr83173.c -fplugin=./location_overflow_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/location_overflow_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-1.c -fplugin=./must_tail_call_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so  (test for errors, line 18)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so  (test for errors, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so  (test for errors, line 40)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so  (test for errors, line 49)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so  (test for errors, line 58)
+    (PASS) => ((null)) : gcc.dg/plugin/must-tail-call-2.c -fplugin=./must_tail_call_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/must_tail_call_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/one_time-test-1.c -fplugin=./one_time_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/one_time_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/plugindir1.c (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/plugindir2.c (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/plugindir3.c (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/plugindir4.c (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-01_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-02_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-03_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-04_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-05_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-06_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-07_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-01_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-02_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-03_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-04_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-05_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-06_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/poly-int-test-1.c -fplugin=./poly-int-07_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so  (test for warnings, line 15)
+    (XFAIL) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so  (test for warnings, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so  (test for warnings, line 20)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so  (test for warnings, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so  (test for warnings, line 22)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-1.c -fplugin=./selfassign.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so  (test for bogus messages, line 15)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so  (test for bogus messages, line 19)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so  (test for bogus messages, line 20)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so  (test for bogus messages, line 21)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so  (test for bogus messages, line 22)
+    (PASS) => ((null)) : gcc.dg/plugin/self-assign-test-2.c -fplugin=./selfassign.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/selfassign.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/start_unit-test-1.c -fplugin=./start_unit_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/start_unit_plugin.c compilation
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-1-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-1-fixed.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XFAIL) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-2-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-2-fixed.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XFAIL) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-2.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-2.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-3-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 26)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-3-fixed.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XFAIL) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-3.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 23)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-3.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XFAIL) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-4.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 35)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-4.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (XFAIL) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for bogus messages, line 39)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5-fixed.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 34)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5-fixed.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 34)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 37)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 39)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-5.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-6.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 29)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-6.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 33)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-6.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 34)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-6.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 36)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-CVE-2011-0521-6.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 101)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 115)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 132)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 44)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 66)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so  (test for warnings, line 84)
+    (PASS) => ((null)) : gcc.dg/plugin/taint-antipatterns-1.c -fplugin=./analyzer_kernel_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/wide-int-test-1.c -fplugin=./wide-int_plugin.so (test for excess errors)
+    (PASS) => ((null)) : gcc.dg/plugin/wide-int_plugin.c compilation
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-1.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-10.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-10b.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-11.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-12.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-13.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-14.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-15.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-16.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-17.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-18.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-1a.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-2.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-3.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-4.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-4b.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-5b.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-6.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-7.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-8.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-9.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr83813.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr84758.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr85217.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr85332.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr85338.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr85350.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr85372.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr86536.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr90574-1.c
+    (UNSUPPORTED) => ((null)) : gcc.misc-tests/gcov-pr90574-2.c
+    (PASS) => ((null)) : gcc.misc-tests/gcov-pr94029.c (test for excess errors)
+    (PASS) => ((null)) : gcc.misc-tests/gcov-pr94029.c gcov
+
